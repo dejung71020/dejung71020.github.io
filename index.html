@@ -1,0 +1,2346 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>이대중 · Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Google+Sans+Display:wght@400;500;700&family=Google+Sans+Text:wght@400;500;700&family=Google+Sans+Code:wght@400;500&family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/icon?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet">
+<style>
+/* ===== Google Material Design 3 Tokens ===== */
+:root {
+  --g-blue: #4285F4;
+  --g-red: #EA4335;
+  --g-yellow: #FBBC04;
+  --g-green: #34A853;
+  --g-blue-dark: #1A73E8;
+  --g-blue-light: #E8F0FE;
+
+  --surface: #FFFFFF;
+  --surface-1: #F8F9FA;
+  --surface-2: #F1F3F4;
+  --surface-3: #E8EAED;
+  --surface-container: #F0F4F9;
+  --outline: #DADCE0;
+  --outline-variant: #E8EAED;
+
+  --on-surface: #202124;
+  --on-surface-variant: #5F6368;
+  --on-surface-muted: #80868B;
+
+  --primary: #1A73E8;
+  --primary-container: #D2E3FC;
+  --on-primary: #FFFFFF;
+
+  --shadow-1: 0 1px 2px 0 rgba(60,64,67,.3), 0 1px 3px 1px rgba(60,64,67,.15);
+  --shadow-2: 0 1px 2px 0 rgba(60,64,67,.3), 0 2px 6px 2px rgba(60,64,67,.15);
+  --shadow-3: 0 4px 8px 3px rgba(60,64,67,.15), 0 1px 3px 0 rgba(60,64,67,.3);
+  --shadow-4: 0 6px 10px 4px rgba(60,64,67,.15), 0 2px 3px 0 rgba(60,64,67,.3);
+
+  --radius-sm: 8px;
+  --radius-md: 16px;
+  --radius-lg: 24px;
+  --radius-xl: 28px;
+  --radius-full: 999px;
+
+  --ease-standard: cubic-bezier(0.2, 0, 0, 1);
+  --ease-emphasized: cubic-bezier(0.3, 0, 0, 1);
+  --ease-decelerated: cubic-bezier(0, 0, 0, 1);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Google Sans Text', 'Noto Sans KR', -apple-system, sans-serif;
+  color: var(--on-surface);
+  background: var(--surface);
+  line-height: 1.5;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, h5 {
+  font-family: 'Google Sans Display', 'Noto Sans KR', sans-serif;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  color: var(--on-surface);
+}
+
+code, pre, .code {
+  font-family: 'Google Sans Code', 'SF Mono', Monaco, monospace;
+}
+
+/* ===== Top App Bar (Google style) ===== */
+.app-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 64px;
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: saturate(180%) blur(20px);
+  -webkit-backdrop-filter: saturate(180%) blur(20px);
+  border-bottom: 1px solid transparent;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  padding: 0 24px;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+.app-bar.scrolled {
+  border-bottom-color: var(--outline-variant);
+  box-shadow: var(--shadow-1);
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  cursor: pointer;
+  user-select: none;
+}
+.brand-logo {
+  font-family: 'Google Sans Display', sans-serif;
+  font-size: 22px;
+  font-weight: 500;
+  letter-spacing: -0.5px;
+  display: flex;
+  align-items: center;
+}
+.brand-logo span:nth-child(1) { color: var(--g-blue); }
+.brand-logo span:nth-child(2) { color: var(--g-red); }
+.brand-logo span:nth-child(3) { color: var(--g-yellow); }
+.brand-logo span:nth-child(4) { color: var(--g-blue); }
+.brand-logo span:nth-child(5) { color: var(--g-green); }
+.brand-logo span:nth-child(6) { color: var(--g-red); }
+.brand-sub {
+  font-size: 13px;
+  color: var(--on-surface-variant);
+  font-weight: 400;
+  padding-left: 12px;
+  border-left: 1px solid var(--outline);
+  margin-left: 4px;
+}
+
+.nav-tabs {
+  display: flex;
+  gap: 4px;
+  margin-left: 32px;
+  align-items: center;
+  overflow-x: auto;
+  scrollbar-width: none;
+  flex: 1;
+}
+.nav-tabs::-webkit-scrollbar { display: none; }
+
+.nav-tab {
+  position: relative;
+  padding: 8px 16px;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--on-surface-variant);
+  background: none;
+  border: none;
+  cursor: pointer;
+  border-radius: var(--radius-full);
+  transition: all 0.2s var(--ease-standard);
+  font-family: inherit;
+  white-space: nowrap;
+}
+.nav-tab:hover {
+  background: var(--surface-2);
+  color: var(--on-surface);
+}
+.nav-tab.active {
+  color: var(--g-blue-dark);
+  background: var(--g-blue-light);
+}
+
+.app-bar-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-left: auto;
+}
+.icon-button {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: none;
+  background: transparent;
+  color: var(--on-surface-variant);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s;
+}
+.icon-button:hover { background: var(--surface-2); }
+.avatar-button {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--g-blue), var(--g-green));
+  color: white;
+  font-weight: 500;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Google Sans Display', sans-serif;
+}
+
+/* ===== Page Container with View Transition ===== */
+.page-container {
+  padding-top: 64px;
+  min-height: 100vh;
+}
+
+.page {
+  display: none;
+  animation: pageEnter 0.5s var(--ease-emphasized);
+}
+.page.active { display: block; }
+
+@keyframes pageEnter {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Stagger reveal */
+.reveal {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: revealUp 0.7s var(--ease-emphasized) forwards;
+}
+.page.active .reveal:nth-child(1) { animation-delay: 0.05s; }
+.page.active .reveal:nth-child(2) { animation-delay: 0.15s; }
+.page.active .reveal:nth-child(3) { animation-delay: 0.25s; }
+.page.active .reveal:nth-child(4) { animation-delay: 0.35s; }
+.page.active .reveal:nth-child(5) { animation-delay: 0.45s; }
+.page.active .reveal:nth-child(6) { animation-delay: 0.55s; }
+
+@keyframes revealUp {
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ===== Home (Google Search style) ===== */
+.home-hero {
+  min-height: calc(100vh - 64px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 24px 80px;
+  position: relative;
+  overflow: hidden;
+}
+
+.doodle-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.5;
+}
+.doodle-bg::before,
+.doodle-bg::after {
+  content: '';
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(60px);
+}
+.doodle-bg::before {
+  width: 400px; height: 400px;
+  background: radial-gradient(circle, var(--g-blue) 0%, transparent 70%);
+  top: -100px; left: -100px;
+  opacity: 0.15;
+  animation: float 20s infinite ease-in-out;
+}
+.doodle-bg::after {
+  width: 500px; height: 500px;
+  background: radial-gradient(circle, var(--g-green) 0%, transparent 70%);
+  bottom: -150px; right: -150px;
+  opacity: 0.12;
+  animation: float 25s infinite ease-in-out reverse;
+}
+@keyframes float {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(30px, -30px) scale(1.1); }
+}
+
+.google-logo {
+  font-family: 'Google Sans Display', sans-serif;
+  font-size: clamp(64px, 12vw, 120px);
+  font-weight: 400;
+  letter-spacing: -4px;
+  margin-bottom: 16px;
+  position: relative;
+  z-index: 1;
+}
+.google-logo span {
+  display: inline-block;
+  animation: bounceIn 0.7s var(--ease-decelerated) backwards;
+}
+.google-logo span:nth-child(1) { color: var(--g-blue); animation-delay: 0.1s; }
+.google-logo span:nth-child(2) { color: var(--g-red); animation-delay: 0.2s; }
+.google-logo span:nth-child(3) { color: var(--g-yellow); animation-delay: 0.3s; }
+.google-logo span:nth-child(4) { color: var(--g-blue); animation-delay: 0.4s; }
+.google-logo span:nth-child(5) { color: var(--g-green); animation-delay: 0.5s; }
+.google-logo span:nth-child(6) { color: var(--g-red); animation-delay: 0.6s; }
+.google-logo span:nth-child(7) { color: var(--g-blue); animation-delay: 0.7s; }
+
+@keyframes bounceIn {
+  0% { opacity: 0; transform: translateY(-30px) scale(0.5); }
+  60% { transform: translateY(8px) scale(1.05); }
+  100% { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.hero-tagline {
+  font-size: 18px;
+  color: var(--on-surface-variant);
+  margin-bottom: 48px;
+  text-align: center;
+  font-weight: 400;
+  position: relative;
+  z-index: 1;
+  max-width: 600px;
+  line-height: 1.6;
+}
+
+.search-box {
+  width: 100%;
+  max-width: 584px;
+  position: relative;
+  z-index: 1;
+}
+.search-input-wrap {
+  display: flex;
+  align-items: center;
+  background: var(--surface);
+  border: 1px solid var(--outline);
+  border-radius: 28px;
+  padding: 0 20px;
+  height: 56px;
+  transition: all 0.2s;
+  box-shadow: var(--shadow-1);
+}
+.search-input-wrap:hover,
+.search-input-wrap:focus-within {
+  box-shadow: var(--shadow-3);
+  border-color: transparent;
+}
+.search-input-wrap .material-symbols-rounded { color: var(--on-surface-muted); }
+.search-input {
+  flex: 1;
+  border: none;
+  outline: none;
+  background: transparent;
+  font-size: 16px;
+  padding: 0 12px;
+  font-family: inherit;
+  color: var(--on-surface);
+}
+
+.hero-actions {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 16px;
+  flex-wrap: wrap;
+  position: relative;
+  z-index: 1;
+}
+.hero-actions .btn-google {
+  padding: 14px 28px;
+  font-size: 15px;
+  border-radius: var(--radius-full);
+  display: inline-flex;
+  align-items: center;
+}
+.hero-actions .btn-google.primary {
+  box-shadow: var(--shadow-2);
+}
+.hero-actions .btn-google.primary:hover {
+  box-shadow: var(--shadow-3);
+  transform: translateY(-2px);
+}
+.hero-actions .btn-google:not(.primary):hover {
+  transform: translateY(-2px);
+}
+.search-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 28px;
+  flex-wrap: wrap;
+}
+.btn-google {
+  background: var(--surface-1);
+  border: 1px solid transparent;
+  color: var(--on-surface);
+  padding: 10px 20px;
+  border-radius: 6px;
+  font-size: 14px;
+  font-family: inherit;
+  cursor: pointer;
+  font-weight: 500;
+  transition: all 0.2s;
+}
+.btn-google:hover {
+  box-shadow: var(--shadow-1);
+  background: var(--surface);
+  border-color: var(--outline);
+  color: var(--on-surface);
+}
+.btn-google.primary {
+  background: var(--g-blue);
+  color: white;
+}
+.btn-google.primary:hover {
+  background: var(--g-blue-dark);
+  box-shadow: var(--shadow-2);
+}
+
+.quick-info {
+  display: flex;
+  gap: 24px;
+  margin-top: 60px;
+  flex-wrap: wrap;
+  justify-content: center;
+  position: relative;
+  z-index: 1;
+}
+.info-chip {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 18px;
+  background: var(--surface);
+  border: 1px solid var(--outline);
+  border-radius: var(--radius-full);
+  font-size: 14px;
+  color: var(--on-surface-variant);
+  transition: all 0.2s;
+  cursor: pointer;
+}
+.info-chip:hover {
+  background: var(--g-blue-light);
+  border-color: var(--g-blue);
+  color: var(--g-blue-dark);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-1);
+}
+
+/* ===== General Container ===== */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 48px 32px;
+}
+.container-narrow {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 48px 32px;
+}
+
+.page-header {
+  margin-bottom: 48px;
+  padding-bottom: 24px;
+  border-bottom: 1px solid var(--outline-variant);
+}
+.page-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 14px;
+  background: var(--g-blue-light);
+  color: var(--g-blue-dark);
+  border-radius: var(--radius-full);
+  font-size: 12px;
+  font-weight: 500;
+  margin-bottom: 16px;
+  letter-spacing: 0.3px;
+  text-transform: uppercase;
+}
+.page-title {
+  font-size: clamp(40px, 6vw, 64px);
+  line-height: 1.05;
+  font-weight: 400;
+  letter-spacing: -0.03em;
+  margin-bottom: 12px;
+}
+.page-subtitle {
+  font-size: 18px;
+  color: var(--on-surface-variant);
+  font-weight: 400;
+  max-width: 720px;
+}
+
+/* ===== About Page ===== */
+.about-grid {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: 48px;
+  align-items: start;
+}
+.about-portrait {
+  position: relative;
+  aspect-ratio: 4/5;
+  background: linear-gradient(135deg, var(--g-blue-light), #FCE8E6);
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  box-shadow: var(--shadow-3);
+}
+.about-portrait::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 30% 20%, var(--g-yellow) 0%, transparent 40%),
+    radial-gradient(circle at 70% 80%, var(--g-green) 0%, transparent 40%);
+  opacity: 0.3;
+  mix-blend-mode: multiply;
+}
+.about-portrait-inner {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Google Sans Display', sans-serif;
+  font-size: 180px;
+  color: var(--g-blue-dark);
+  opacity: 0.15;
+  font-weight: 700;
+}
+.about-portrait-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 25%;
+  z-index: 1;
+  transition: transform 0.6s var(--ease-emphasized);
+}
+.about-portrait:hover .about-portrait-img {
+  transform: scale(1.04);
+}
+.about-portrait-frame {
+  position: absolute;
+  inset: 16px;
+  border: 2px solid rgba(255, 255, 255, 0.4);
+  border-radius: 20px;
+  z-index: 2;
+  pointer-events: none;
+  mix-blend-mode: overlay;
+}
+.about-portrait .about-portrait-overlay {
+  z-index: 3;
+}
+.about-portrait-overlay {
+  position: absolute;
+  bottom: 24px;
+  left: 24px;
+  right: 24px;
+  padding: 16px 20px;
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.about-portrait-overlay .material-symbols-rounded {
+  color: var(--g-green);
+}
+.about-portrait-overlay span:last-child {
+  font-size: 14px;
+  color: var(--on-surface);
+  font-weight: 500;
+}
+
+.about-headline {
+  font-size: clamp(32px, 4.5vw, 48px);
+  line-height: 1.15;
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  margin-bottom: 24px;
+}
+.about-headline strong {
+  font-weight: 700;
+  background: linear-gradient(90deg, var(--g-blue), var(--g-green));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.about-body {
+  font-size: 16px;
+  line-height: 1.75;
+  color: var(--on-surface-variant);
+  margin-bottom: 24px;
+}
+
+.skills-section {
+  margin-top: 64px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+.skill-card {
+  background: var(--surface);
+  border: 1px solid var(--outline-variant);
+  border-radius: var(--radius-lg);
+  padding: 28px;
+  transition: all 0.3s var(--ease-standard);
+}
+.skill-card:hover {
+  box-shadow: var(--shadow-2);
+  transform: translateY(-4px);
+  border-color: transparent;
+}
+.skill-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 16px;
+}
+.skill-icon.blue { background: var(--g-blue-light); color: var(--g-blue-dark); }
+.skill-icon.red { background: #FCE8E6; color: var(--g-red); }
+.skill-icon.green { background: #E6F4EA; color: var(--g-green); }
+.skill-card h3 {
+  font-size: 18px;
+  margin-bottom: 12px;
+}
+.skill-card p {
+  font-size: 14px;
+  color: var(--on-surface-variant);
+  margin-bottom: 12px;
+  line-height: 1.6;
+}
+.skill-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 12px;
+}
+.skill-tag {
+  font-size: 12px;
+  padding: 4px 10px;
+  background: var(--surface-2);
+  border-radius: var(--radius-full);
+  color: var(--on-surface-variant);
+  font-family: 'Google Sans Code', monospace;
+}
+
+/* ===== Project Cards (Google Drive style) ===== */
+.project-hero {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 48px;
+  align-items: center;
+  margin-bottom: 64px;
+}
+.project-meta-card {
+  background: var(--surface-container);
+  border-radius: var(--radius-xl);
+  padding: 32px;
+}
+.project-tag {
+  display: inline-block;
+  font-size: 12px;
+  padding: 4px 12px;
+  background: var(--g-blue-light);
+  color: var(--g-blue-dark);
+  border-radius: var(--radius-full);
+  font-weight: 500;
+  margin-bottom: 16px;
+}
+.project-name {
+  font-size: 40px;
+  font-weight: 500;
+  margin-bottom: 24px;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+}
+.project-info-list {
+  list-style: none;
+}
+.project-info-list li {
+  display: flex;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--outline-variant);
+  font-size: 14px;
+}
+.project-info-list li:last-child { border-bottom: none; }
+.project-info-list .label {
+  font-weight: 500;
+  color: var(--on-surface);
+  min-width: 100px;
+}
+.project-info-list .value {
+  color: var(--on-surface-variant);
+  flex: 1;
+}
+
+.project-preview {
+  aspect-ratio: 4/3;
+  background: linear-gradient(135deg, #1a1a1a, #2d2d2d);
+  border-radius: var(--radius-lg);
+  position: relative;
+  overflow: hidden;
+  box-shadow: var(--shadow-4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  padding: 32px;
+}
+.project-preview.light {
+  background: linear-gradient(135deg, var(--g-blue-light), #FFF);
+  color: var(--g-blue-dark);
+}
+.project-preview-content {
+  width: 100%;
+  font-family: 'Google Sans Code', monospace;
+  font-size: 13px;
+  line-height: 1.8;
+  opacity: 0.95;
+}
+
+/* Section blocks */
+.section-block {
+  margin-bottom: 56px;
+}
+.section-label {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+.section-label-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--g-blue);
+}
+.section-label h2 {
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-weight: 500;
+  color: var(--on-surface-variant);
+}
+.section-title {
+  font-size: 32px;
+  font-weight: 500;
+  margin-bottom: 20px;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+}
+.section-text {
+  font-size: 16px;
+  line-height: 1.75;
+  color: var(--on-surface-variant);
+  margin-bottom: 16px;
+}
+
+.feature-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+  margin-top: 24px;
+}
+.feature-item {
+  background: var(--surface);
+  border: 1px solid var(--outline-variant);
+  border-radius: var(--radius-md);
+  padding: 24px;
+  transition: all 0.3s var(--ease-standard);
+}
+.feature-item:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-2);
+  border-color: transparent;
+}
+.feature-item-num {
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--g-blue);
+  margin-bottom: 12px;
+  letter-spacing: 1px;
+}
+.feature-item h4 {
+  font-size: 16px;
+  margin-bottom: 8px;
+  font-weight: 500;
+}
+.feature-item p {
+  font-size: 13px;
+  color: var(--on-surface-variant);
+  line-height: 1.6;
+}
+
+/* Pipeline (horizontal scrolling cards) */
+.pipeline {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 12px;
+  margin-top: 24px;
+  position: relative;
+}
+.pipeline-step {
+  position: relative;
+  background: var(--surface);
+  border: 1px solid var(--outline-variant);
+  border-radius: var(--radius-md);
+  padding: 20px;
+  text-align: center;
+}
+.pipeline-step::after {
+  content: '→';
+  position: absolute;
+  right: -14px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--on-surface-muted);
+  font-size: 20px;
+  z-index: 1;
+}
+.pipeline-step:last-child::after { display: none; }
+.pipeline-step-num {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--g-blue-light);
+  color: var(--g-blue-dark);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  font-weight: 500;
+  margin-bottom: 10px;
+}
+.pipeline-step h5 {
+  font-size: 14px;
+  margin-bottom: 4px;
+  font-weight: 500;
+}
+.pipeline-step p {
+  font-size: 11px;
+  color: var(--on-surface-variant);
+  line-height: 1.5;
+}
+.pipeline-step:nth-child(1) .pipeline-step-num { background: var(--g-blue-light); color: var(--g-blue-dark); }
+.pipeline-step:nth-child(2) .pipeline-step-num { background: #FEF7E0; color: #B06000; }
+.pipeline-step:nth-child(3) .pipeline-step-num { background: #FCE8E6; color: var(--g-red); }
+.pipeline-step:nth-child(4) .pipeline-step-num { background: #E6F4EA; color: var(--g-green); }
+.pipeline-step:nth-child(5) .pipeline-step-num { background: #F3E8FD; color: #7627BB; }
+
+/* Architecture diagram blocks */
+.arch-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+  margin-top: 24px;
+}
+.arch-card {
+  background: linear-gradient(135deg, var(--surface-container), var(--surface));
+  border: 1px solid var(--outline-variant);
+  border-radius: var(--radius-lg);
+  padding: 24px;
+  transition: all 0.3s;
+}
+.arch-card:hover {
+  box-shadow: var(--shadow-2);
+  border-color: var(--g-blue);
+}
+.arch-card-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+.arch-card-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--g-blue-light);
+  color: var(--g-blue-dark);
+}
+.arch-card-icon.red { background: #FCE8E6; color: var(--g-red); }
+.arch-card-icon.green { background: #E6F4EA; color: var(--g-green); }
+.arch-card-icon.yellow { background: #FEF7E0; color: #B06000; }
+.arch-card h4 {
+  font-size: 16px;
+  margin-bottom: 2px;
+  font-weight: 500;
+}
+.arch-card-tag {
+  font-size: 12px;
+  color: var(--on-surface-muted);
+}
+.arch-card-tables {
+  font-family: 'Google Sans Code', monospace;
+  font-size: 12px;
+  color: var(--on-surface-variant);
+  line-height: 1.8;
+  background: var(--surface);
+  padding: 12px 14px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--outline-variant);
+}
+
+/* Problem/Solution pattern */
+.ps-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-top: 24px;
+}
+.ps-card {
+  border-radius: var(--radius-lg);
+  padding: 28px;
+  transition: all 0.3s;
+}
+.ps-card.problem {
+  background: #FEF7E0;
+  border: 1px solid #FDE293;
+}
+.ps-card.solution {
+  background: #E6F4EA;
+  border: 1px solid #A8DAB5;
+}
+.ps-card-label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 12px;
+  font-size: 12px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+.ps-card.problem .ps-card-label { color: #B06000; }
+.ps-card.solution .ps-card-label { color: #137333; }
+.ps-card h4 {
+  font-size: 18px;
+  margin-bottom: 8px;
+  font-weight: 500;
+}
+.ps-card p {
+  font-size: 14px;
+  line-height: 1.7;
+  color: var(--on-surface);
+}
+.ps-card ul {
+  list-style: none;
+  margin-top: 12px;
+}
+.ps-card ul li {
+  padding: 6px 0;
+  padding-left: 20px;
+  position: relative;
+  font-size: 14px;
+  color: var(--on-surface);
+}
+.ps-card ul li::before {
+  content: '→';
+  position: absolute;
+  left: 0;
+  color: inherit;
+  opacity: 0.6;
+}
+
+/* Code preview */
+.code-preview {
+  background: #202124;
+  border-radius: var(--radius-lg);
+  padding: 24px;
+  font-family: 'Google Sans Code', 'JetBrains Mono', monospace;
+  font-size: 13px;
+  line-height: 1.7;
+  color: #E8EAED;
+  overflow-x: auto;
+  margin-top: 16px;
+  box-shadow: var(--shadow-2);
+}
+.code-preview .keyword { color: #C58AF9; }
+.code-preview .string { color: #95D5A0; }
+.code-preview .comment { color: #80868B; }
+.code-preview .fn { color: #82AAFF; }
+.code-preview .type { color: #FFB86C; }
+
+/* Stats row */
+.stats-row {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  margin: 32px 0;
+  padding: 24px;
+  background: var(--surface-container);
+  border-radius: var(--radius-lg);
+}
+.stat-item {
+  text-align: center;
+}
+.stat-value {
+  font-family: 'Google Sans Display', sans-serif;
+  font-size: 36px;
+  font-weight: 500;
+  background: linear-gradient(135deg, var(--g-blue), var(--g-green));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  line-height: 1;
+  letter-spacing: -0.02em;
+}
+.stat-label {
+  font-size: 12px;
+  color: var(--on-surface-variant);
+  margin-top: 8px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+/* Retrospective */
+.retro-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  margin-top: 32px;
+}
+.retro-card {
+  background: var(--surface);
+  border-left: 4px solid var(--g-blue);
+  border-radius: var(--radius-md);
+  padding: 28px;
+  box-shadow: var(--shadow-1);
+}
+.retro-card.regret { border-left-color: var(--g-red); }
+.retro-card h3 {
+  font-size: 20px;
+  margin-bottom: 16px;
+  font-weight: 500;
+}
+.retro-card p {
+  font-size: 14px;
+  color: var(--on-surface-variant);
+  line-height: 1.75;
+  margin-bottom: 12px;
+}
+
+/* Contact page */
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  margin-top: 32px;
+}
+.contact-list {
+  list-style: none;
+}
+.contact-item {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 20px;
+  border-radius: var(--radius-lg);
+  margin-bottom: 12px;
+  background: var(--surface);
+  border: 1px solid var(--outline-variant);
+  transition: all 0.3s;
+  cursor: pointer;
+  text-decoration: none;
+  color: inherit;
+}
+.contact-item:hover {
+  background: var(--surface-1);
+  transform: translateX(8px);
+  box-shadow: var(--shadow-2);
+  border-color: transparent;
+}
+.contact-icon {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.contact-icon.blue { background: var(--g-blue-light); color: var(--g-blue-dark); }
+.contact-icon.red { background: #FCE8E6; color: var(--g-red); }
+.contact-icon.yellow { background: #FEF7E0; color: #B06000; }
+.contact-icon.green { background: #E6F4EA; color: var(--g-green); }
+.contact-item h4 {
+  font-size: 14px;
+  color: var(--on-surface-variant);
+  margin-bottom: 4px;
+  font-weight: 500;
+}
+.contact-item p {
+  font-size: 16px;
+  color: var(--on-surface);
+  font-weight: 500;
+}
+
+.repos-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
+}
+.repo-card {
+  background: var(--surface);
+  border: 1px solid var(--outline-variant);
+  border-radius: var(--radius-lg);
+  padding: 20px;
+  transition: all 0.2s;
+}
+.repo-card:hover {
+  border-color: var(--g-blue);
+  box-shadow: var(--shadow-1);
+}
+.repo-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+.repo-header .material-symbols-rounded {
+  font-size: 18px;
+  color: var(--on-surface-variant);
+}
+.repo-name {
+  font-family: 'Google Sans Code', monospace;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--g-blue-dark);
+}
+.repo-desc {
+  font-size: 13px;
+  color: var(--on-surface-variant);
+  line-height: 1.6;
+}
+
+/* Token explainer (jwt page) */
+.token-table {
+  width: 100%;
+  background: var(--surface);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  border: 1px solid var(--outline-variant);
+  margin-top: 16px;
+}
+.token-table th, .token-table td {
+  padding: 14px 20px;
+  text-align: left;
+  font-size: 14px;
+  border-bottom: 1px solid var(--outline-variant);
+}
+.token-table th {
+  background: var(--surface-1);
+  font-weight: 500;
+  color: var(--on-surface-variant);
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+.token-table tr:last-child td { border-bottom: none; }
+.token-table .badge {
+  display: inline-block;
+  font-size: 11px;
+  padding: 3px 10px;
+  border-radius: var(--radius-full);
+  font-weight: 500;
+  font-family: 'Google Sans Code', monospace;
+}
+.token-table .badge.access { background: var(--g-blue-light); color: var(--g-blue-dark); }
+.token-table .badge.refresh { background: #E6F4EA; color: #137333; }
+
+/* Footer */
+.footer {
+  border-top: 1px solid var(--outline-variant);
+  padding: 32px;
+  background: var(--surface-1);
+  margin-top: 80px;
+  font-size: 13px;
+  color: var(--on-surface-muted);
+  text-align: center;
+}
+
+/* Page-specific tints */
+.tab-color-blue { --tab-color: var(--g-blue); }
+.tab-color-red { --tab-color: var(--g-red); }
+.tab-color-yellow { --tab-color: #B06000; }
+.tab-color-green { --tab-color: var(--g-green); }
+.tab-color-purple { --tab-color: #7627BB; }
+
+/* Mobile responsiveness */
+@media (max-width: 920px) {
+  .nav-tabs { display: none; }
+  .about-grid, .project-hero, .contact-grid, .retro-grid {
+    grid-template-columns: 1fr;
+  }
+  .skills-section, .arch-grid, .ps-grid {
+    grid-template-columns: 1fr;
+  }
+  .pipeline {
+    grid-template-columns: 1fr;
+  }
+  .pipeline-step::after {
+    content: '↓';
+    right: 50%;
+    bottom: -22px;
+    top: auto;
+    transform: translateX(50%);
+  }
+  .stats-row {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .container, .container-narrow {
+    padding: 32px 20px;
+  }
+}
+
+/* Mobile menu drawer */
+.mobile-menu-btn {
+  display: none;
+}
+@media (max-width: 920px) {
+  .mobile-menu-btn { display: flex; }
+}
+.mobile-drawer {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 280px;
+  background: var(--surface);
+  box-shadow: var(--shadow-4);
+  z-index: 200;
+  transform: translateX(100%);
+  transition: transform 0.3s var(--ease-emphasized);
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.mobile-drawer.open { transform: translateX(0); }
+.mobile-drawer .nav-tab {
+  text-align: left;
+  width: 100%;
+  padding: 14px 20px;
+  font-size: 15px;
+  border-radius: var(--radius-full);
+}
+.scrim {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.4);
+  z-index: 150;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s;
+}
+.scrim.open { opacity: 1; pointer-events: auto; }
+
+/* Ripple */
+.ripple-container {
+  position: relative;
+  overflow: hidden;
+}
+.ripple {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  background: rgba(26, 115, 232, 0.3);
+  transform: scale(0);
+  animation: rippleEffect 0.6s linear;
+}
+@keyframes rippleEffect {
+  to { transform: scale(4); opacity: 0; }
+}
+</style>
+</head>
+<body>
+
+<!-- Top App Bar -->
+<header class="app-bar" id="appBar">
+  <div class="brand" onclick="navigate('home')">
+    <div class="brand-logo">
+      <span>D</span><span>a</span><span>e</span><span>j</span><span>u</span><span>n</span><span>g</span>
+    </div>
+    <div class="brand-sub">Portfolio</div>
+  </div>
+
+  <nav class="nav-tabs" id="navTabs">
+    <button class="nav-tab" data-page="home">Home</button>
+    <button class="nav-tab" data-page="about">About</button>
+    <button class="nav-tab" data-page="meeting">회의 에이전트</button>
+    <button class="nav-tab" data-page="mold">곰팡이 진단 AI</button>
+    <button class="nav-tab" data-page="petshop">애완용품샵</button>
+    <button class="nav-tab" data-page="wallet">DJ Wallet</button>
+    <button class="nav-tab" data-page="contact">Contact</button>
+  </nav>
+
+  <div class="app-bar-actions">
+    <button class="icon-button mobile-menu-btn" onclick="toggleMenu()" aria-label="메뉴">
+      <span class="material-symbols-rounded">menu</span>
+    </button>
+    <button class="icon-button" aria-label="앱" title="이대중의 작업물">
+      <span class="material-symbols-rounded">apps</span>
+    </button>
+    <button class="avatar-button" title="이대중" style="background-image:url('data:image/jpeg;base64,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');background-size:cover;background-position:center 25%;color:transparent;border:2px solid var(--surface);box-shadow:var(--shadow-1)" aria-label="이대중"></button>
+  </div>
+</header>
+
+<!-- Mobile drawer -->
+<div class="scrim" id="scrim" onclick="toggleMenu()"></div>
+<aside class="mobile-drawer" id="mobileDrawer">
+  <button class="nav-tab" data-page="home">Home</button>
+  <button class="nav-tab" data-page="about">About</button>
+  <button class="nav-tab" data-page="meeting">회의 에이전트</button>
+  <button class="nav-tab" data-page="mold">곰팡이 진단 AI</button>
+  <button class="nav-tab" data-page="petshop">애완용품샵</button>
+  <button class="nav-tab" data-page="wallet">DJ Wallet</button>
+  <button class="nav-tab" data-page="contact">Contact</button>
+</aside>
+
+<main class="page-container">
+
+  <!-- ===== HOME ===== -->
+  <section class="page active" id="page-home">
+    <div class="home-hero">
+      <div class="doodle-bg"></div>
+      <div class="google-logo">
+        <span>D</span><span>a</span><span>e</span><span>j</span><span>u</span><span>n</span><span>g</span>
+      </div>
+      <p class="hero-tagline">서비스의 완성도를 끝까지 책임지는 백엔드 개발자, 이대중</p>
+
+      <div class="hero-actions">
+        <button class="btn-google primary" onclick="navigate('about')">
+          <span class="material-symbols-rounded" style="font-size:18px;vertical-align:middle;margin-right:6px">person</span>
+          About 이대중
+        </button>
+        <button class="btn-google" onclick="navigate('meeting')">
+          <span class="material-symbols-rounded" style="font-size:18px;vertical-align:middle;margin-right:6px">folder_open</span>
+          프로젝트 보기
+        </button>
+        <button class="btn-google" onclick="navigate('contact')">
+          <span class="material-symbols-rounded" style="font-size:18px;vertical-align:middle;margin-right:6px">mail</span>
+          Contact
+        </button>
+      </div>
+
+      <div class="quick-info">
+        <div class="info-chip" onclick="navigate('meeting')">
+          <span class="material-symbols-rounded" style="font-size:18px;color:var(--g-blue)">groups</span>
+          <span>회의 에이전트 웹서비스</span>
+        </div>
+        <div class="info-chip" onclick="navigate('mold')">
+          <span class="material-symbols-rounded" style="font-size:18px;color:var(--g-green)">eco</span>
+          <span>곰팡이 진단 AI 앱</span>
+        </div>
+        <div class="info-chip" onclick="navigate('petshop')">
+          <span class="material-symbols-rounded" style="font-size:18px;color:var(--g-red)">pets</span>
+          <span>애완용품샵</span>
+        </div>
+        <div class="info-chip" onclick="navigate('wallet')">
+          <span class="material-symbols-rounded" style="font-size:18px;color:#B06000">account_balance_wallet</span>
+          <span>AI 금융 비서</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== ABOUT ===== -->
+  <section class="page" id="page-about">
+    <div class="container">
+      <header class="page-header reveal">
+        <div class="page-eyebrow">
+          <span class="material-symbols-rounded" style="font-size:14px">person</span>
+          About
+        </div>
+        <h1 class="page-title">서비스의 완성도를<br><span style="background:linear-gradient(90deg,var(--g-blue),var(--g-red),var(--g-yellow),var(--g-green));-webkit-background-clip:text;background-clip:text;color:transparent;font-weight:700">끝까지 책임지는</span><br>백엔드 개발자</h1>
+        <p class="page-subtitle">설계부터 배포까지 직접 경험했습니다. FastAPI 기반 REST API 설계, SQLAlchemy 중심 DB 모델링, Docker, AWS Infra까지 — 단순히 동작하는 코드가 아니라 오류 없는 서비스를 만드는 것이 목표입니다.</p>
+      </header>
+
+      <div class="about-grid reveal">
+        <div>
+          <h2 class="about-headline">지금도 <strong>"팡팡팡"</strong> 앱을 유지보수하며, 다음의 완성을 향해 갑니다.</h2>
+          <p class="about-body">강원대학교 정보통신공학과를 졸업하고 코리아 IT 아카데미에서 LangChain · AI 영상객체탐지분석 플랫폼 구축 과정을 수료했습니다. 정보처리기사, 네트워크 관리사 2급 자격을 보유하고 있으며, FastAPI · SQLAlchemy를 중심으로 한 백엔드 개발과 외부 API 연동에 강점이 있습니다.</p>
+          <p class="about-body">Gemini, 기상청, Slack, Jira, Notion, Google Calendar, Kakao 등 다양한 외부 API를 직접 연동해본 경험과, PlayStore에 실제 배포한 '팡팡팡' 앱을 유지보수하며 운영 단계의 시행착오를 쌓아왔습니다.</p>
+        </div>
+
+        <div class="about-portrait">
+          <img class="about-portrait-img" src="data:image/jpeg;base64,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" alt="이대중 프로필 사진">
+          <div class="about-portrait-frame"></div>
+          <div class="about-portrait-overlay">
+            <span class="material-symbols-rounded">verified</span>
+            <span>2025 강원대 정보통신공학과 졸업</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="skills-section">
+        <div class="skill-card reveal">
+          <div class="skill-icon blue">
+            <span class="material-symbols-rounded">school</span>
+          </div>
+          <h3>교육사항</h3>
+          <p>강원대학교 삼척캠퍼스 정보통신공학과 (2025년 졸업)</p>
+          <p>코리아 IT 아카데미 — 랭체인 AI 영상객체탐지분석 플랫폼 구축 (2025.11–2026.05)</p>
+        </div>
+
+        <div class="skill-card reveal">
+          <div class="skill-icon red">
+            <span class="material-symbols-rounded">code</span>
+          </div>
+          <h3>기술 스택</h3>
+          <p>Python 백엔드를 중심으로 한 풀스택 인프라 경험</p>
+          <div class="skill-tags">
+            <span class="skill-tag">Python</span>
+            <span class="skill-tag">FastAPI</span>
+            <span class="skill-tag">SQLAlchemy</span>
+            <span class="skill-tag">MySQL</span>
+            <span class="skill-tag">MongoDB</span>
+            <span class="skill-tag">Redis</span>
+            <span class="skill-tag">ChromaDB</span>
+            <span class="skill-tag">AWS EC2</span>
+            <span class="skill-tag">S3</span>
+            <span class="skill-tag">RDS</span>
+            <span class="skill-tag">Route53</span>
+            <span class="skill-tag">Docker</span>
+            <span class="skill-tag">nginx</span>
+            <span class="skill-tag">JWT</span>
+            <span class="skill-tag">OAuth 2.0</span>
+            <span class="skill-tag">Pydantic</span>
+            <span class="skill-tag">OpenAI</span>
+            <span class="skill-tag">Gemini</span>
+          </div>
+        </div>
+
+        <div class="skill-card reveal">
+          <div class="skill-icon green">
+            <span class="material-symbols-rounded">workspace_premium</span>
+          </div>
+          <h3>자격 / 경험</h3>
+          <p><strong>네트워크 관리사 2급</strong> (2023) · <strong>정보처리기사</strong> (2024)</p>
+          <p><strong>외부 API 연동:</strong> Gemini, 기상청, Slack, Jira, Notion, Google Calendar, Kakao</p>
+          <p><strong>PlayStore 배포 및 유지보수:</strong> 팡팡팡 앱</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== MEETING AGENT ===== -->
+  <section class="page" id="page-meeting">
+    <div class="container">
+      <header class="page-header reveal">
+        <div class="page-eyebrow">
+          <span class="material-symbols-rounded" style="font-size:14px">groups</span>
+          KDT 최종 팀프로젝트
+        </div>
+        <h1 class="page-title">회의 에이전트<br>웹 서비스</h1>
+        <p class="page-subtitle">회의 내용의 통일성 확보, 결정사안의 반자동 처리를 목표로 한 멀티 외부 서비스 통합 웹서비스. Jira, Slack, Google Calendar를 하나의 파이프라인으로 묶었습니다.</p>
+      </header>
+
+      <div class="project-hero reveal">
+        <div class="project-meta-card">
+          <div class="project-tag">최종 팀프로젝트</div>
+          <h2 class="project-name">WorkB</h2>
+          <ul class="project-info-list">
+            <li><span class="label">담당</span><span class="value">백엔드 개발 · 외부서비스 연동 · 배포</span></li>
+            <li><span class="label">작업 기간</span><span class="value">2026.04 – 2026.05</span></li>
+            <li><span class="label">팀 구성</span><span class="value">6명</span></li>
+            <li><span class="label">DB</span><span class="value">MySQL + MongoDB</span></li>
+            <li><span class="label">스택</span><span class="value">FastAPI · OAuth 2.0 · Docker</span></li>
+          </ul>
+        </div>
+        <div class="project-preview">
+          <div class="project-preview-content">
+<span style="color:#FBBC04">// 시연 마지막 테스트</span> <span style="opacity:0.5">· 2026.05.11 17:21</span>
+
+<span style="color:#82AAFF">📋 요약</span>
+  • 발표자 조수민 선정
+  • 시험자 서유진, 이대중, 조수민 선정
+  • PPT 작업 분담
+  • 기능 테스트 및 리허설 일정 확정
+
+<span style="color:#34A853">▼ 전문 타임라인</span>
+  <span style="opacity:0.7">조수민 00:03</span> 자 다들 모이셨죠? 오늘 회의는...
+  <span style="opacity:0.7">조수민 00:10</span> 안건은 좀 네 가지예요.
+  <span style="opacity:0.7">서유진 00:31</span> 저는 개발 파트는 자신 있는데...
+
+<span style="color:#EA4335">→ JIRA · Slack · Calendar 자동 연동</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Overview / Pipeline -->
+      <div class="section-block reveal">
+        <div class="section-label">
+          <div class="section-label-dot"></div>
+          <h2>Overview</h2>
+        </div>
+        <h3 class="section-title">하나의 파이프라인으로<br>낭비되는 시간을 단축했습니다.</h3>
+        <p class="section-text">기존 회의에서는 결정사안 이해의 차이, 수동 Jira 할당, 다음 일정 조율을 위한 개별 질의가 반복됐습니다. 회의 → 요약 → 액션 → 내보내기 → 다음 회의 추천을 하나의 파이프라인 안에 묶었습니다.</p>
+
+        <div class="pipeline">
+          <div class="pipeline-step">
+            <div class="pipeline-step-num">1</div>
+            <h5>화자 분리 · 저장</h5>
+            <p>발화 캡처 및 화자별 분류</p>
+          </div>
+          <div class="pipeline-step">
+            <div class="pipeline-step-num">2</div>
+            <h5>요약 · 태스크 분해</h5>
+            <p>LLM으로 액션 아이템 추출</p>
+          </div>
+          <div class="pipeline-step">
+            <div class="pipeline-step-num">3</div>
+            <h5>사용자 확인 · 편집</h5>
+            <p>수동 보정 인터페이스</p>
+          </div>
+          <div class="pipeline-step">
+            <div class="pipeline-step-num">4</div>
+            <h5>원 클릭 내보내기</h5>
+            <p>JIRA · Slack · Calendar 일괄</p>
+          </div>
+          <div class="pipeline-step">
+            <div class="pipeline-step-num">5</div>
+            <h5>다음 회의 추천</h5>
+            <p>Freebusy 기반 일정 제안</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Architecture -->
+      <div class="section-block reveal">
+        <div class="section-label">
+          <div class="section-label-dot" style="background:var(--g-red)"></div>
+          <h2>Architecture · DB</h2>
+        </div>
+        <h3 class="section-title">5개 이상 스택을 Docker 한 줄로,<br>로컬 HTTPS까지 환경을 통일했습니다.</h3>
+        <p class="section-text">MySQL · MongoDB · Redis · ChromaDB · nginx 스택을 docker-compose로 묶었고, 모든 컨테이너에 TZ: Asia/Seoul을 주입해 로그·스케줄링 정합성을 확보했습니다. nginx self-signed 인증으로 Slack · Notion OAuth의 HTTPS 요구사항을 로컬에서 해결했습니다.</p>
+
+        <div class="arch-grid">
+          <div class="arch-card">
+            <div class="arch-card-header">
+              <div class="arch-card-icon blue"><span class="material-symbols-rounded">database</span></div>
+              <div>
+                <h4>워크스페이스 영역</h4>
+                <div class="arch-card-tag">MySQL</div>
+              </div>
+            </div>
+            <div class="arch-card-tables">workspaces, departments,<br>workspace_members,<br>invite_codes, device_settings</div>
+          </div>
+
+          <div class="arch-card">
+            <div class="arch-card-header">
+              <div class="arch-card-icon green"><span class="material-symbols-rounded">person</span></div>
+              <div>
+                <h4>사용자 영역</h4>
+                <div class="arch-card-tag">MySQL</div>
+              </div>
+            </div>
+            <div class="arch-card-tables">users, user_device_settings</div>
+          </div>
+
+          <div class="arch-card">
+            <div class="arch-card-header">
+              <div class="arch-card-icon red"><span class="material-symbols-rounded">forum</span></div>
+              <div>
+                <h4>회의 영역</h4>
+                <div class="arch-card-tag">MySQL + MongoDB</div>
+              </div>
+            </div>
+            <div class="arch-card-tables">meetings, meeting_participants,<br>speaker_profiles, decisions,<br>minute_photo, utterances</div>
+          </div>
+
+          <div class="arch-card">
+            <div class="arch-card-header">
+              <div class="arch-card-icon yellow"><span class="material-symbols-rounded">task_alt</span></div>
+              <div>
+                <h4>액션 영역</h4>
+                <div class="arch-card-tag">MySQL</div>
+              </div>
+            </div>
+            <div class="arch-card-tables">wbs_epics, wbs_tasks,<br>wbs_snapshot, reports</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Role / Problem-Solution: n8n → FastAPI -->
+      <div class="section-block reveal">
+        <div class="section-label">
+          <div class="section-label-dot" style="background:var(--g-yellow)"></div>
+          <h2>My Role &amp; Features</h2>
+        </div>
+        <h3 class="section-title">n8n 위임 구조 → FastAPI 내재화<br><span style="color:var(--on-surface-variant);font-size:24px">외부 서비스 통합 아키텍처 전환</span></h3>
+        <p class="section-text">초기에는 FastAPI → n8n → (Slack/Calendar/Jira) 구조였으나, n8n은 정적 크레덴셜 관리에 최적화돼 있어 워크스페이스마다 다른 크레덴셜을 다루기 어려웠습니다. 토큰 관리 주체가 모호해지는 문제로 BaseClient 상속 구조로 전환했습니다.</p>
+
+        <div class="ps-grid">
+          <div class="ps-card problem">
+            <div class="ps-card-label">
+              <span class="material-symbols-rounded" style="font-size:16px">warning</span>
+              문제점
+            </div>
+            <h4>n8n 위임 구조의 한계</h4>
+            <p>토큰 관리 주체 일관성 모호, 워크스페이스별 정적 크레덴셜 관리 부적합. 중간 단계에서 오류가 발생할 변수 증가.</p>
+          </div>
+          <div class="ps-card solution">
+            <div class="ps-card-label">
+              <span class="material-symbols-rounded" style="font-size:16px">check_circle</span>
+              해결 방안
+            </div>
+            <h4>BaseClient 상속 + FastAPI 내재화</h4>
+            <ul>
+              <li>BaseClient 추상 클래스 설계</li>
+              <li>Slack · Google · Notion · JIRA · Kakao 상속</li>
+              <li>Redirect URL → callback 내부 처리</li>
+              <li>토큰 만료 5분 전 자동 갱신</li>
+            </ul>
+          </div>
+        </div>
+
+        <pre class="code-preview"><span class="keyword">class</span> <span class="type">BaseClient</span>:
+    <span class="comment">"""모든 외부 API 클라이언트의 부모 기본 클래스"""</span>
+
+    <span class="keyword">def</span> <span class="fn">__init__</span>(<span class="keyword">self</span>, base_url: <span class="type">str</span>, headers: <span class="type">Optional</span>[<span class="type">Dict</span>[<span class="type">str</span>, <span class="type">str</span>]] = <span class="keyword">None</span>):
+        <span class="comment"># 외부 서비스의 기본주소 설정</span>
+        <span class="keyword">self</span>.base_url = base_url.rstrip(<span class="string">'/'</span>)
+        <span class="keyword">self</span>.headers = headers <span class="keyword">or</span> {}
+
+    <span class="keyword">async def</span> <span class="fn">_request</span>(<span class="keyword">self</span>, method: <span class="type">str</span>, endpoint: <span class="type">str</span>, **kwargs) -&gt; <span class="type">Dict</span>[<span class="type">str</span>, <span class="type">Any</span>]:
+        <span class="comment"># Slack, Jira, Calendar 모두 상속</span>
+        ...</pre>
+      </div>
+
+      <!-- Integration design -->
+      <div class="section-block reveal">
+        <div class="section-label">
+          <div class="section-label-dot" style="background:var(--g-green)"></div>
+          <h2>Integration Design</h2>
+        </div>
+        <h3 class="section-title">extra_config 컬럼으로<br>서비스별 요구사항을 흡수했습니다.</h3>
+        <p class="section-text">서비스마다 필요한 데이터가 달랐습니다. Slack은 bot_token/channel_id/team_id, Calendar는 access/refresh + calendar 정보, Jira는 cloud_id, site_url, project_key 등. extra_config(JSON) 컬럼으로 공통 토큰 컬럼과 서비스별 메타데이터를 분리했습니다. SQLAlchemy Mapped 타입으로 마이그레이션 안정성도 확보했습니다.</p>
+
+        <div class="feature-grid">
+          <div class="feature-item">
+            <div class="feature-item-num">SERVICE 01</div>
+            <h4>Slack</h4>
+            <p><code style="font-size:11px">bot_token, channel_id, team_id</code></p>
+          </div>
+          <div class="feature-item">
+            <div class="feature-item-num">SERVICE 02</div>
+            <h4>Google Calendar</h4>
+            <p><code style="font-size:11px">access/refresh_token, calendar_id, calendar_name</code></p>
+          </div>
+          <div class="feature-item">
+            <div class="feature-item-num">SERVICE 03</div>
+            <h4>Jira</h4>
+            <p><code style="font-size:11px">cloud_id, site_url, project_key, status</code></p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Troubleshooting -->
+      <div class="section-block reveal">
+        <div class="section-label">
+          <div class="section-label-dot" style="background:var(--g-red)"></div>
+          <h2>Troubleshooting</h2>
+        </div>
+        <h3 class="section-title">다음 회의 일정 추천 알고리즘<br><span style="color:var(--on-surface-variant);font-size:22px">의도와 다른 변수에 부딪힌 케이스</span></h3>
+        <p class="section-text">Gmail을 강제 입력받지 않아 개인 캘린더 직접 조회가 불가능했습니다. Slack 채널 멤버 이메일 자동 수집 → Calendar Freebusy API에 전달 → busy slots 취합 → 빈 구간 최대 3개 추천 로직을 구현했지만, Freebusy 권한 미수신·워크스페이스 외부 슬랙 멤버 등 예기치 못한 변수들이 남았습니다.</p>
+
+        <div class="retro-grid">
+          <div class="retro-card">
+            <h3>✓ 배운 점</h3>
+            <p>외부 서비스끼리 매핑하려면 예기치 못한 변수가 많다는 것을 경험했습니다. 효율을 위해 API를 섞었지만, 오히려 부작용이 커질 수 있다는 점을 배웠습니다.</p>
+          </div>
+          <div class="retro-card regret">
+            <h3>✗ 미해결 과제</h3>
+            <p>Freebusy 권한 미수신 시 폴백, 워크스페이스 외 슬랙 멤버 매핑 등 — 다른 서비스를 엮는 설계는 지양하고, 도메인 내부에서 해결 가능한 방식을 우선해야 한다는 결론.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Retrospective -->
+      <div class="section-block reveal">
+        <div class="section-label">
+          <div class="section-label-dot" style="background:#7627BB"></div>
+          <h2>Retrospective</h2>
+        </div>
+        <h3 class="section-title">프로젝트를 마치며</h3>
+        <p class="section-text">처음에는 n8n으로 외부 서비스를 위임하려 했지만, 결국 직접 구현으로 돌아왔습니다. 다만 다음 개인 프로젝트(AI 금융 비서)에서는 n8n이 잘 어울리는 시나리오가 있다는 것을 알게 됐습니다.</p>
+        <p class="section-text">공통된 부분을 코드로 만든다면 상속을 적극 활용해야 한다는 것을 체득했습니다. 다만 외부 API 연동 코드가 많다 보니 테스트 코드를 충분히 작성하지 못한 점이 아쉽고, 다음에는 Swagger 기반 테스트 코드를 먼저 갖춰두고 시작하고 싶습니다.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== MOLD AI APP ===== -->
+  <section class="page" id="page-mold">
+    <div class="container">
+      <header class="page-header reveal">
+        <div class="page-eyebrow">
+          <span class="material-symbols-rounded" style="font-size:14px">eco</span>
+          KDT 중간 팀프로젝트 · 실제 출시
+        </div>
+        <h1 class="page-title">곰팡이 진단<br>AI 앱 <span style="color:var(--g-green)">"팡팡팡"</span></h1>
+        <p class="page-subtitle">스마트폰으로 촬영한 곰팡이를 판별하고, 표면 결로 원리에 기반한 위험도 수치화와 해결책을 제공하는 모바일 서비스. AWS 인프라 위에 실제 배포·유지보수 중입니다.</p>
+      </header>
+
+      <div class="project-hero reveal">
+        <div class="project-meta-card">
+          <div class="project-tag" style="background:#E6F4EA;color:#137333">실제 배포 중</div>
+          <h2 class="project-name">팡팡팡</h2>
+          <ul class="project-info-list">
+            <li><span class="label">담당</span><span class="value">백엔드 개발 · 배포</span></li>
+            <li><span class="label">작업 기간</span><span class="value">2026.01 – 2026.02 (1.5개월)</span></li>
+            <li><span class="label">팀 구성</span><span class="value">4명</span></li>
+            <li><span class="label">스택</span><span class="value">FastAPI · APScheduler · ChromaDB</span></li>
+            <li><span class="label">인프라</span><span class="value">EC2 · S3 · Route53 · Firebase FCM</span></li>
+          </ul>
+        </div>
+        <div class="project-preview light">
+          <div class="project-preview-content" style="color:var(--on-surface);font-family:inherit">
+            <div style="font-family:'Google Sans Display';font-size:48px;font-weight:500;color:var(--g-red);line-height:1">77%</div>
+            <div style="font-size:13px;color:var(--on-surface-variant);margin-top:4px">곰팡이 위험도 · 18:00 기준</div>
+            <div style="margin-top:16px;font-size:14px;color:var(--g-red)">⚠ 즉시 환기해주세요</div>
+            <div style="display:flex;gap:8px;margin-top:16px;font-size:12px">
+              <div style="flex:1;padding:10px;background:#E6F4EA;border-radius:8px;text-align:center">
+                <div style="color:#137333;font-weight:500">최저 68%</div>
+                <div style="opacity:0.7">16:00</div>
+              </div>
+              <div style="flex:1;padding:10px;background:#FCE8E6;border-radius:8px;text-align:center">
+                <div style="color:#C5221F;font-weight:500">최고 89%</div>
+                <div style="opacity:0.7">23:00</div>
+              </div>
+            </div>
+            <div style="margin-top:14px;padding:10px;background:#E6F4EA;border-radius:8px;font-size:12px;color:#137333;text-align:center">
+              ⏱ 오늘의 환기 골든타임 10:00 ~ 20:00
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Overview -->
+      <div class="section-block reveal">
+        <div class="section-label">
+          <div class="section-label-dot" style="background:var(--g-green)"></div>
+          <h2>Overview</h2>
+        </div>
+        <h3 class="section-title">곰팡이에 대한 지식 부족,<br>그리고 모바일 운영의 경험.</h3>
+        <p class="section-text">파일 하나에 1000줄이 넘어가 가독성이 떨어지는 협업 문제, 단기예보 API의 격자좌표, 곰팡이 위험도를 수치화할 공식 부재, 학습 모델 판별 후의 해결책, 모바일 앱 배포 무경험 — 5가지 도전 과제로 시작했습니다.</p>
+
+        <div class="stats-row">
+          <div class="stat-item">
+            <div class="stat-value">11</div>
+            <div class="stat-label">DDD 도메인</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-value">12</div>
+            <div class="stat-label">지역 날씨 수집</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-value">288</div>
+            <div class="stat-label">일일 데이터 포인트</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-value">14</div>
+            <div class="stat-label">베타 테스터</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- DDD Architecture -->
+      <div class="section-block reveal">
+        <div class="section-label">
+          <div class="section-label-dot" style="background:var(--g-blue)"></div>
+          <h2>Architecture</h2>
+        </div>
+        <h3 class="section-title">DDD 아키텍처로 응집도↑ 결합도↓<br>11개 도메인을 분리했습니다.</h3>
+        <p class="section-text">설계 단계부터 DDD 도입. 도메인별 독립 수정이 가능해 코드 충돌을 최소화했습니다. 각 도메인 내부는 models / repository / service / router / schemas 계층으로 분리.</p>
+
+        <div class="feature-grid">
+          <div class="feature-item"><div class="feature-item-num">DOMAIN 01</div><h4>auth</h4><p>카카오 OAuth · JWT 발급</p></div>
+          <div class="feature-item"><div class="feature-item-num">DOMAIN 02</div><h4>diagnosis</h4><p>AI 곰팡이 진단</p></div>
+          <div class="feature-item"><div class="feature-item-num">DOMAIN 03</div><h4>dictionary</h4><p>곰팡이 사전 (RAG)</p></div>
+          <div class="feature-item"><div class="feature-item-num">DOMAIN 04</div><h4>fortune</h4><p>일일 운세 기능</p></div>
+          <div class="feature-item"><div class="feature-item-num">DOMAIN 05</div><h4>game</h4><p>곰팡이 게임</p></div>
+          <div class="feature-item"><div class="feature-item-num">DOMAIN 06</div><h4>home</h4><p>홈 화면 데이터</p></div>
+          <div class="feature-item"><div class="feature-item-num">DOMAIN 07</div><h4>iot</h4><p>IoT 센서 연동 준비</p></div>
+          <div class="feature-item"><div class="feature-item-num">DOMAIN 08</div><h4>my_page</h4><p>사용자 마이페이지</p></div>
+          <div class="feature-item"><div class="feature-item-num">DOMAIN 09</div><h4>notification</h4><p>FCM 푸시</p></div>
+          <div class="feature-item"><div class="feature-item-num">DOMAIN 10</div><h4>search</h4><p>주소 검색</p></div>
+          <div class="feature-item"><div class="feature-item-num">DOMAIN 11</div><h4>user</h4><p>사용자 정보</p></div>
+        </div>
+      </div>
+
+      <!-- JWT -->
+      <div class="section-block reveal">
+        <div class="section-label">
+          <div class="section-label-dot" style="background:var(--g-yellow)"></div>
+          <h2>Auth · JWT</h2>
+        </div>
+        <h3 class="section-title">Refresh Token은 해시화하여 DB에,<br>Access Token은 짧게.</h3>
+        <p class="section-text">클라이언트 → 카카오 Access Token → 서버 → 카카오 API 유저 정보 조회 → DB 조회/생성 → 자체 JWT (Access + Refresh) 발급. /api/auth/refresh로 만료 시 DB 해시값 검증 후 새 Access Token 발급.</p>
+
+        <table class="token-table">
+          <thead>
+            <tr><th>토큰</th><th>만료</th><th>저장 위치 및 방식</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><span class="badge access">Access Token</span></td>
+              <td>60분</td>
+              <td>클라이언트 (로컬/쿠키)</td>
+            </tr>
+            <tr>
+              <td><span class="badge refresh">Refresh Token</span></td>
+              <td>90일</td>
+              <td>DB (해시화하여 저장)</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Risk algorithm -->
+      <div class="section-block reveal">
+        <div class="section-label">
+          <div class="section-label-dot" style="background:var(--g-red)"></div>
+          <h2>My Role &amp; Features</h2>
+        </div>
+        <h3 class="section-title">표면 결로 원리로<br>위험도를 수치화했습니다.</h3>
+        <p class="section-text">LLM 교차 검증과 논문 검색으로 표면 결로 공식을 찾고, AI 학습 없이 논리적 근거로 0–100점 위험도를 산출했습니다.</p>
+
+        <div class="pipeline" style="grid-template-columns:repeat(3,1fr)">
+          <div class="pipeline-step">
+            <div class="pipeline-step-num">1</div>
+            <h5>실내 온습도 추정</h5>
+            <p>T_in = 21.0 + 5.0 × sin(π/2 × (T_out-5)/25)</p>
+          </div>
+          <div class="pipeline-step">
+            <div class="pipeline-step-num">2</div>
+            <h5>벽면 온습도 추정</h5>
+            <p>T_wall = T_in - (T_in - T_out) × (1 - f_Rsi)<br>창문 방향·층수 가중치 적용</p>
+          </div>
+          <div class="pipeline-step">
+            <div class="pipeline-step-num">3</div>
+            <h5>위험도 판별</h5>
+            <p>벽면 상대습도 80%↑ → 발아<br>0–60: 안전 / 60–80: 주의 / 80–100: 위험</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- RAG -->
+      <div class="section-block reveal">
+        <div class="section-label">
+          <div class="section-label-dot" style="background:#7627BB"></div>
+          <h2>곰팡이 솔루션 폐쇄형 RAG</h2>
+        </div>
+        <h3 class="section-title">환각 현상을 ChromaDB로 통제했습니다.</h3>
+        <p class="section-text">기존 곰팡이 사전을 임베딩하여 ChromaDB에 벡터화 저장. 판별된 곰팡이 종류를 유사도 검색으로 솔루션 추출 → Gemini 2.5 flash-lite에 주입하여 최종 리포트 생성. 사전 데이터 내에서만 답변을 생성하여 환각을 방지하며, 비용과 응답 속도를 동시에 최적화했습니다.</p>
+
+        <div class="ps-grid">
+          <div class="ps-card solution">
+            <div class="ps-card-label">
+              <span class="material-symbols-rounded" style="font-size:16px">add_circle</span>
+              장점
+            </div>
+            <h4>환각 통제 + 비용 최적화</h4>
+            <p>사전 데이터 내에서 답변 생성, Gemini Flash-Lite로 비용 절감, ChromaDB 로컬 운영으로 외부 비용 0원.</p>
+          </div>
+          <div class="ps-card problem">
+            <div class="ps-card-label">
+              <span class="material-symbols-rounded" style="font-size:16px">remove_circle</span>
+              한계
+            </div>
+            <h4>사전 업데이트 + 유사도 정밀도</h4>
+            <p>사전이 하드코딩이라 업데이트 시 불편함이 있고, 유사도 검색이 디테일하지 않아 정밀 추출 로직 보강 필요.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Weather API + Troubleshooting -->
+      <div class="section-block reveal">
+        <div class="section-label">
+          <div class="section-label-dot" style="background:var(--g-yellow)"></div>
+          <h2>Troubleshooting</h2>
+        </div>
+        <h3 class="section-title">기상청 단기예보 API의<br>격자좌표와 트래픽 병목</h3>
+        <p class="section-text">단기예보 API는 위경도가 아닌 격자좌표를 사용합니다. 카카오 맵 API로 위경도 변환 후 수학 공식으로 격자좌표 매핑. 전국 수천 개 데이터 대신 12개 주요 도시(서울·인천·수원·춘천·강릉·대전·청주·광주·전주·대구·부산·제주)로 DB 저장을 최소화했습니다.</p>
+        <p class="section-text">00시 호출 시 공공데이터포털의 트래픽 병목으로 추정되는 간헐적 타임아웃이 발생. 타임아웃 연장 · 최대 3회 재시도 · 호출 시간 분산을 적용했지만 여전히 간헐적 실패가 남아 있어, 외부 API에 대한 예외 처리의 중요성을 체감했습니다.</p>
+
+        <div class="ps-grid">
+          <div class="ps-card problem">
+            <div class="ps-card-label">미해결 과제</div>
+            <h4>날씨 데이터 수집 실패</h4>
+            <p>외부 API 장애 원인이 명확히 파악되지 않아, 알 수 없는 변수에도 예외처리를 해야 한다는 교훈만 남았습니다.</p>
+          </div>
+          <div class="ps-card solution">
+            <div class="ps-card-label">EC2 비용 절감</div>
+            <h4>ONNX 경량화 + Gemini Flash-Lite</h4>
+            <p>AI 모델을 ONNX로 경량화해 GPU 없는 인스턴스 사용. Gemini 2.5 flash-lite로 LLM 비용도 절감. 4명이 15달러씩 분담.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Retrospective -->
+      <div class="section-block reveal">
+        <div class="section-label">
+          <div class="section-label-dot" style="background:var(--g-green)"></div>
+          <h2>Retrospective</h2>
+        </div>
+        <h3 class="section-title">프로젝트를 마치며</h3>
+        <div class="retro-grid">
+          <div class="retro-card">
+            <h3>✓ 배운 점</h3>
+            <p>DDD 아키텍처로 도메인별 독립 개발이 가능해 코드 충돌을 획기적으로 줄였습니다. 협업 구조에 최적화된 설계의 중요성을 체감했습니다.</p>
+            <p>도메인 지식이 부족해도 LLM 활용과 검증을 통해 신뢰성 높은 코드로 구현할 수 있다는 것을 배웠습니다. PlayStore 배포 전 14명의 테스터에게 평가받고 실제 출시도 경험했습니다.</p>
+          </div>
+          <div class="retro-card regret">
+            <h3>✗ 아쉬운 점</h3>
+            <p>실제 배포 후 사용자 수가 적어 오류 피드백을 충분히 받지 못했습니다.</p>
+            <p>날씨 API 오류만 발견되어 실제 유지보수 경험이 다양하게 쌓이지 못했습니다. 지금도 운영하며 천천히 개선해 나가고 있습니다.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== PET SHOP ===== -->
+  <section class="page" id="page-petshop">
+    <div class="container">
+      <header class="page-header reveal">
+        <div class="page-eyebrow">
+          <span class="material-symbols-rounded" style="font-size:14px">pets</span>
+          KDT 세미 팀프로젝트
+        </div>
+        <h1 class="page-title">애완용품샵<br><span style="color:var(--g-red);font-size:0.6em">경수오빠못해조</span></h1>
+        <p class="page-subtitle">반려동물 용품 이커머스 백엔드. FastAPI REST API 설계부터 AI 챗봇 연동까지, 5명 팀의 첫 프로젝트 협업을 경험한 자리.</p>
+      </header>
+
+      <div class="project-hero reveal">
+        <div class="project-meta-card">
+          <div class="project-tag" style="background:#FCE8E6;color:var(--g-red)">세미 팀프로젝트</div>
+          <h2 class="project-name">PetShop</h2>
+          <ul class="project-info-list">
+            <li><span class="label">담당</span><span class="value">백엔드 개발</span></li>
+            <li><span class="label">작업 기간</span><span class="value">2025.12 – 2026.01 (1.5개월)</span></li>
+            <li><span class="label">팀 구성</span><span class="value">5명</span></li>
+            <li><span class="label">스택</span><span class="value">FastAPI · SQLAlchemy · Pydantic · OpenAI</span></li>
+          </ul>
+        </div>
+        <div class="project-preview light">
+          <div class="project-preview-content" style="color:var(--on-surface);font-family:inherit;font-size:14px">
+            <div style="padding:10px 14px;background:white;border-radius:18px 18px 18px 4px;margin-bottom:8px;box-shadow:var(--shadow-1);display:inline-block;max-width:80%">
+              안녕하세요! 무엇을 도와드릴까요?
+            </div>
+            <div style="text-align:right">
+              <div style="padding:10px 14px;background:#E6F4EA;border-radius:18px 18px 4px 18px;margin-bottom:8px;display:inline-block">
+                강아지 사료
+              </div>
+            </div>
+            <div style="padding:10px 14px;background:white;border-radius:18px 18px 18px 4px;box-shadow:var(--shadow-1);font-size:13px;line-height:1.6">
+              강아지 사료는 상단 메뉴바에서 '강아지' 카테고리 안의 '사료' 하위 메뉴에서 다양하게 만나보실 수 있습니다.
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="section-block reveal">
+        <div class="section-label">
+          <div class="section-label-dot"></div>
+          <h2>MVC Architecture</h2>
+        </div>
+        <h3 class="section-title">첫 5인 협업,<br>MVC로 충돌을 최소화했습니다.</h3>
+        <p class="section-text">templates (Jinja2 View) → routers (Controller) → orders/products/auth (Service) → data/DAO Layer (Model) 구조로 분리. External Engine으로 chatbot(OpenAI), crawlers(Selenium), recommend(Scikit-learn)을 분리. 팀원 간 DB 환경 일관성을 위해 AWS RDS를 도입했습니다.</p>
+
+        <div class="feature-grid">
+          <div class="feature-item">
+            <div class="feature-item-num">TABLE</div>
+            <h4>users · products</h4>
+            <p>사용자/제품 마스터 정보</p>
+          </div>
+          <div class="feature-item">
+            <div class="feature-item-num">TABLE</div>
+            <h4>orders + order_items</h4>
+            <p>구매 총금액 + 상세 품목</p>
+          </div>
+          <div class="feature-item">
+            <div class="feature-item-num">TABLE</div>
+            <h4>carts</h4>
+            <p>로그아웃 후에도 유지되는 장바구니</p>
+          </div>
+          <div class="feature-item">
+            <div class="feature-item-num">TABLE</div>
+            <h4>reviews · memos</h4>
+            <p>리뷰 및 게시글</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="section-block reveal">
+        <div class="section-label">
+          <div class="section-label-dot" style="background:var(--g-red)"></div>
+          <h2>주문 / 재고 트랜잭션</h2>
+        </div>
+        <h3 class="section-title">하나의 트랜잭션으로 묶어<br>데이터 불일치를 방지했습니다.</h3>
+        <p class="section-text">결제, 재고 차감, 기록 생성이 개별 처리되면 중간 서버 다운 시 데이터 불일치가 발생합니다. 5단계를 단일 트랜잭션으로 묶어 실패 시 롤백되도록 처리.</p>
+
+        <pre class="code-preview"><span class="keyword">def</span> <span class="fn">create_order</span>(db: <span class="type">Session</span>, user_id: <span class="type">int</span>, items: <span class="type">List</span>[<span class="type">Dict</span>]):
+    <span class="keyword">try</span>:
+        total_price = <span class="fn">sum</span>(item[<span class="string">'price'</span>] * item[<span class="string">'quantity'</span>] <span class="keyword">for</span> item <span class="keyword">in</span> items)
+
+        order_sql = <span class="string">"""INSERT INTO orders (user_id, total_price) VALUES (:uid, :total)"""</span>
+        result = db.<span class="fn">execute</span>(<span class="fn">text</span>(order_sql), {<span class="string">"uid"</span>: user_id, <span class="string">"total"</span>: total_price})
+        order_id = result.lastrowid
+
+        <span class="keyword">for</span> item <span class="keyword">in</span> items:
+            db.<span class="fn">execute</span>(<span class="fn">text</span>(<span class="string">"INSERT INTO order_items ..."</span>), {...})
+            db.<span class="fn">execute</span>(<span class="fn">text</span>(<span class="string">"UPDATE products SET stock = stock - :qty ..."</span>), {...})
+
+        db.<span class="fn">commit</span>()
+        <span class="keyword">return</span> order_id
+    <span class="keyword">except</span> <span class="type">Exception</span> <span class="keyword">as</span> e:
+        db.<span class="fn">rollback</span>()
+        <span class="keyword">raise</span> e</pre>
+      </div>
+
+      <div class="section-block reveal">
+        <div class="section-label">
+          <div class="section-label-dot" style="background:var(--g-yellow)"></div>
+          <h2>Troubleshooting</h2>
+        </div>
+        <h3 class="section-title">챗봇 환각 — FAQ JSON 50개로 가이드레일</h3>
+        <p class="section-text">OpenAI API 챗봇이 사이트와 무관한 질문에도 답하는 환각 현상이 발생. 예상 질문/답변 50개를 JSON으로 구조화하여 시스템 프롬프트에 주입, 외 질문은 거절하도록 가이드레일을 설계했습니다.</p>
+
+        <div class="ps-grid">
+          <div class="ps-card solution">
+            <div class="ps-card-label">장점</div>
+            <h4>별도 DB 없이 처리</h4>
+            <p>FAQ JSON 주입만으로 효율적 가이드레일 구현. 응답 시간 빠름.</p>
+          </div>
+          <div class="ps-card problem">
+            <div class="ps-card-label">한계</div>
+            <h4>토큰 비용 증가</h4>
+            <p>FAQ가 늘수록 매 요청 토큰 비용 증가. 다음에는 DB + RAG 기반으로 전환할 계획.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="section-block reveal">
+        <div class="section-label">
+          <div class="section-label-dot" style="background:var(--g-green)"></div>
+          <h2>Retrospective</h2>
+        </div>
+        <p class="section-text">LLM 챗봇 구현 자체는 어렵지 않았지만, FAQ 주입 방식은 예상 질문을 일일이 생각하며 하드코딩해야 해 한계가 분명했습니다. 좀 더 효율적인 RAG 방식의 필요성을 느꼈고, 이후 곰팡이 진단 앱의 ChromaDB RAG로 이어졌습니다.</p>
+        <p class="section-text">파일 하나에 1000줄이 넘어가는 구조에서 불필요·중복 코드가 많이 생긴다는 걸 체감했고, 다음 프로젝트에서 DDD 아키텍처를 도입한 직접적인 계기가 되었습니다.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== DJ WALLET ===== -->
+  <section class="page" id="page-wallet">
+    <div class="container">
+      <header class="page-header reveal">
+        <div class="page-eyebrow">
+          <span class="material-symbols-rounded" style="font-size:14px">account_balance_wallet</span>
+          개인 프로젝트
+        </div>
+        <h1 class="page-title">DJ Wallet<br><span style="color:#B06000;font-size:0.6em">AI 금융 비서</span></h1>
+        <p class="page-subtitle">ETF 구조, 글로벌 매크로, 이벤트 드리븐 투자에 대한 관심을 코드로 구현하는 개인 프로젝트. 프론트·백엔드·AI·배포 1인 도전.</p>
+      </header>
+
+      <div class="project-hero reveal">
+        <div class="project-meta-card">
+          <div class="project-tag" style="background:#FEF7E0;color:#B06000">보류 (진행 중)</div>
+          <h2 class="project-name">AI Finance Agent</h2>
+          <ul class="project-info-list">
+            <li><span class="label">담당</span><span class="value">프론트(바이브코딩) · 백엔드 · AI · 개인 배포</span></li>
+            <li><span class="label">작업 기간</span><span class="value">2025.04 – (보류)</span></li>
+            <li><span class="label">팀 구성</span><span class="value">1명</span></li>
+            <li><span class="label">스택</span><span class="value">FastAPI · LangGraph · AES-256-GCM</span></li>
+          </ul>
+        </div>
+        <div class="project-preview">
+          <div class="project-preview-content">
+<span class="comment"># 암호화 (AES-256-GCM, 32바이트 키)</span>
+
+<span style="color:#C58AF9">def</span> <span style="color:#82AAFF">encrypt</span>(plaintext: <span style="color:#FFB86C">str</span>) -&gt; <span style="color:#FFB86C">str</span>:
+    aesgcm = <span style="color:#82AAFF">AESGCM</span>(<span style="color:#82AAFF">_get_key</span>())
+    nonce = os.<span style="color:#82AAFF">urandom</span>(<span style="color:#FBBC04">12</span>)
+    ciphertext = aesgcm.<span style="color:#82AAFF">encrypt</span>(
+        nonce, plaintext.<span style="color:#82AAFF">encode</span>(), <span style="color:#C58AF9">None</span>
+    )
+    <span style="color:#C58AF9">return</span> base64.<span style="color:#82AAFF">b64encode</span>(
+        nonce + ciphertext
+    ).<span style="color:#82AAFF">decode</span>()
+
+<span class="comment"># nonce는 매번 새로 생성 — 보안의 핵심</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="section-block reveal">
+        <div class="section-label">
+          <div class="section-label-dot" style="background:#B06000"></div>
+          <h2>Concept</h2>
+        </div>
+        <h3 class="section-title">금융 데이터를 안전하게,<br>의사결정을 빠르게.</h3>
+        <p class="section-text">SpaceX IPO 영향이 MAGS·QQQ·SPY·IWB·IWM ETF에 어떻게 전달되는지, Russell 1000/2000/3000 재구성 메커니즘에서 ONDS가 어디에 위치하는지 — 이런 질문들을 코드로 다뤄보고 싶었습니다.</p>
+        <p class="section-text">금융 데이터의 민감성 때문에 AES-256-GCM 암호화를 직접 구현했고, 각 거래/포지션마다 새로운 nonce를 생성하여 같은 평문도 항상 다른 암호문이 되도록 설계했습니다.</p>
+      </div>
+
+      <div class="section-block reveal">
+        <div class="section-label">
+          <div class="section-label-dot" style="background:var(--g-blue)"></div>
+          <h2>Planned Architecture</h2>
+        </div>
+        <div class="feature-grid">
+          <div class="feature-item">
+            <div class="feature-item-num">DOMAIN</div>
+            <h4>asset / investment</h4>
+            <p>자산 · 투자 포지션 관리</p>
+          </div>
+          <div class="feature-item">
+            <div class="feature-item-num">DOMAIN</div>
+            <h4>transaction</h4>
+            <p>거래 기록 (암호화 저장)</p>
+          </div>
+          <div class="feature-item">
+            <div class="feature-item-num">DOMAIN</div>
+            <h4>planning</h4>
+            <p>장기 계획 · 시나리오</p>
+          </div>
+          <div class="feature-item">
+            <div class="feature-item-num">DOMAIN</div>
+            <h4>coach / automation</h4>
+            <p>LangGraph 기반 AI 코칭</p>
+          </div>
+        </div>
+        <p class="section-text" style="margin-top:24px">회의 에이전트 프로젝트에서 제거했던 n8n도 — 개인 자동화 시나리오에서는 잘 어울릴 수 있다는 깨달음을 적용해볼 예정입니다.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CONTACT ===== -->
+  <section class="page" id="page-contact">
+    <div class="container-narrow">
+      <header class="page-header reveal">
+        <div class="page-eyebrow">
+          <span class="material-symbols-rounded" style="font-size:14px">contact_page</span>
+          Contact
+        </div>
+        <h1 class="page-title">함께 만들어볼까요?</h1>
+        <p class="page-subtitle">새로운 프로젝트, 협업, 혹은 개발 이야기 — 무엇이든 환영합니다.</p>
+      </header>
+
+      <div class="contact-grid reveal">
+        <ul class="contact-list">
+          <a href="mailto:dejung71020@gmail.com" class="contact-item">
+            <div class="contact-icon red">
+              <span class="material-symbols-rounded">mail</span>
+            </div>
+            <div>
+              <h4>이메일</h4>
+              <p>dejung71020@gmail.com</p>
+            </div>
+          </a>
+          <a href="tel:01097451519" class="contact-item">
+            <div class="contact-icon blue">
+              <span class="material-symbols-rounded">call</span>
+            </div>
+            <div>
+              <h4>연락처</h4>
+              <p>010-9745-1519</p>
+            </div>
+          </a>
+          <a href="https://absorbed-numeric-d89.notion.site/2e166e601b8380a6ab72e26fc93a6a53?v=2e166e601b83815b8b0a000ccc2c9920&source=copy_link" target="_blank" rel="noopener noreferrer" class="contact-item">
+            <div class="contact-icon yellow">
+              <span class="material-symbols-rounded">edit_note</span>
+            </div>
+            <div>
+              <h4>홈페이지 · 노션</h4>
+              <p>이대중의 노션 페이지 →</p>
+            </div>
+          </a>
+          <a href="https://github.com/dejung71020" target="_blank" class="contact-item">
+            <div class="contact-icon green">
+              <span class="material-symbols-rounded">code</span>
+            </div>
+            <div>
+              <h4>GitHub</h4>
+              <p>github.com/dejung71020</p>
+            </div>
+          </a>
+        </ul>
+
+        <div class="repos-grid">
+          <div class="repo-card">
+            <div class="repo-header">
+              <span class="material-symbols-rounded">folder_open</span>
+              <span class="repo-name">dejung71020/workb-backend</span>
+            </div>
+            <p class="repo-desc">회의 준비부터 기록·액션아이템까지 지원하는 WorkB BACKEND</p>
+          </div>
+          <div class="repo-card">
+            <div class="repo-header">
+              <span class="material-symbols-rounded">folder_open</span>
+              <span class="repo-name">dejung71020/QUAIL_BACK-END</span>
+            </div>
+            <p class="repo-desc">QUAIL 팀의 팡팡팡 앱 백엔드 FastAPI 서버</p>
+          </div>
+          <div class="repo-card">
+            <div class="repo-header">
+              <span class="material-symbols-rounded">folder_open</span>
+              <span class="repo-name">dejung71020/ai-finance-agent</span>
+            </div>
+            <p class="repo-desc">AI 금융 비서 — 개인 프로젝트</p>
+          </div>
+          <div class="repo-card">
+            <div class="repo-header">
+              <span class="material-symbols-rounded">folder_open</span>
+              <span class="repo-name">dejung71020/project1</span>
+            </div>
+            <p class="repo-desc">애완용품샵 — KDT 세미 팀프로젝트</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <p>© 2026 이대중 · Portfolio · Built with Material Design 3</p>
+  </footer>
+</main>
+
+<script>
+// ===== Routing & Page Transitions =====
+const pages = ['home', 'about', 'meeting', 'mold', 'petshop', 'wallet', 'contact'];
+
+function navigate(page, push = true) {
+  if (!pages.includes(page)) page = 'home';
+
+  // View transition for modern browsers
+  const doNav = () => {
+    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
+
+    const target = document.getElementById('page-' + page);
+    if (target) {
+      target.classList.add('active');
+      // Reset reveal animations
+      target.querySelectorAll('.reveal').forEach(el => {
+        el.style.animation = 'none';
+        // eslint-disable-next-line no-unused-expressions
+        el.offsetHeight; // force reflow
+        el.style.animation = '';
+      });
+    }
+
+    document.querySelectorAll(`.nav-tab[data-page="${page}"]`).forEach(t => t.classList.add('active'));
+
+    window.scrollTo({ top: 0, behavior: 'instant' });
+
+    if (push) history.pushState({ page }, '', '#' + page);
+    document.title = '이대중 · ' + (
+      { home: 'Portfolio', about: 'About', meeting: '회의 에이전트', mold: '곰팡이 진단 AI',
+        petshop: '애완용품샵', wallet: 'DJ Wallet', contact: 'Contact' }[page] || 'Portfolio'
+    );
+
+    // Close mobile drawer
+    document.getElementById('mobileDrawer').classList.remove('open');
+    document.getElementById('scrim').classList.remove('open');
+  };
+
+  if (document.startViewTransition) {
+    document.startViewTransition(doNav);
+  } else {
+    doNav();
+  }
+}
+
+// Bind navigation
+document.querySelectorAll('.nav-tab').forEach(tab => {
+  tab.addEventListener('click', (e) => {
+    createRipple(e, tab);
+    const page = tab.getAttribute('data-page');
+    navigate(page);
+  });
+});
+
+// Browser history
+window.addEventListener('popstate', (e) => {
+  const page = (e.state && e.state.page) || location.hash.replace('#', '') || 'home';
+  navigate(page, false);
+});
+
+// Initial load from hash
+window.addEventListener('DOMContentLoaded', () => {
+  const initial = location.hash.replace('#', '') || 'home';
+  navigate(initial, false);
+});
+
+// Scroll effect on app bar
+const appBar = document.getElementById('appBar');
+window.addEventListener('scroll', () => {
+  if (window.scrollY > 8) appBar.classList.add('scrolled');
+  else appBar.classList.remove('scrolled');
+});
+
+// Mobile menu
+function toggleMenu() {
+  document.getElementById('mobileDrawer').classList.toggle('open');
+  document.getElementById('scrim').classList.toggle('open');
+}
+
+// Ripple effect (Material Design)
+function createRipple(event, button) {
+  const rect = button.getBoundingClientRect();
+  const ripple = document.createElement('span');
+  const size = Math.max(rect.width, rect.height);
+  ripple.style.width = ripple.style.height = size + 'px';
+  ripple.style.left = (event.clientX - rect.left - size / 2) + 'px';
+  ripple.style.top = (event.clientY - rect.top - size / 2) + 'px';
+  ripple.classList.add('ripple');
+
+  const oldRipple = button.querySelector('.ripple');
+  if (oldRipple) oldRipple.remove();
+  button.style.position = 'relative';
+  button.style.overflow = 'hidden';
+  button.appendChild(ripple);
+  setTimeout(() => ripple.remove(), 600);
+}
+
+document.querySelectorAll('.btn-google, .info-chip, .feature-item, .skill-card, .arch-card, .ps-card').forEach(el => {
+  el.addEventListener('click', (e) => createRipple(e, el));
+});
+
+// Search removed — using hero-actions instead
+</script>
+</body>
+</html>
