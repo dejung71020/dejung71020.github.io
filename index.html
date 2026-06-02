@@ -1373,6 +1373,366 @@ code, pre, .code {
   .proj-chip { width: 100%; }
 }
 
+
+/* ===== Timeline ===== */
+.timeline {
+  position: relative;
+  margin-top: 24px;
+  padding-left: 8px;
+}
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 19px;
+  top: 8px;
+  bottom: 28px;
+  width: 2px;
+  background: linear-gradient(to bottom, var(--g-blue), var(--g-green));
+  border-radius: 2px;
+}
+.timeline-item {
+  display: flex;
+  gap: 20px;
+  padding-bottom: 24px;
+  position: relative;
+}
+.timeline-item:last-child { padding-bottom: 0; }
+.timeline-dot {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--surface);
+  border: 2px solid var(--g-blue);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  position: relative;
+  z-index: 1;
+  box-shadow: var(--shadow-1);
+  transition: all 0.3s;
+}
+.timeline-dot:hover { box-shadow: var(--shadow-2); transform: scale(1.1); }
+.timeline-dot.green { border-color: var(--g-green); }
+.timeline-dot.red { border-color: var(--g-red); }
+.timeline-dot.yellow { border-color: #B06000; }
+.timeline-dot.purple { border-color: #7627BB; }
+.timeline-dot .material-symbols-rounded { font-size: 18px; color: var(--g-blue); }
+.timeline-dot.green .material-symbols-rounded { color: var(--g-green); }
+.timeline-dot.red .material-symbols-rounded { color: var(--g-red); }
+.timeline-dot.yellow .material-symbols-rounded { color: #B06000; }
+.timeline-dot.purple .material-symbols-rounded { color: #7627BB; }
+.timeline-content {
+  flex: 1;
+  background: var(--surface);
+  border: 1px solid var(--outline-variant);
+  border-radius: var(--radius-md);
+  padding: 16px 20px;
+  box-shadow: var(--shadow-1);
+  transition: all 0.3s var(--ease-standard);
+  margin-top: 2px;
+}
+.timeline-content:hover {
+  box-shadow: var(--shadow-3);
+  transform: translateX(6px);
+  border-color: transparent;
+}
+.timeline-period {
+  font-size: 11px;
+  color: var(--on-surface-muted);
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  margin-bottom: 4px;
+  font-family: 'Google Sans Code', monospace;
+  text-transform: uppercase;
+}
+.timeline-title {
+  font-size: 15px;
+  font-weight: 500;
+  margin-bottom: 3px;
+  color: var(--on-surface);
+}
+.timeline-sub {
+  font-size: 13px;
+  color: var(--on-surface-variant);
+  line-height: 1.5;
+}
+
+/* ===== Cert cards ===== */
+.cert-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+  margin-top: 20px;
+}
+.cert-card {
+  background: var(--surface);
+  border: 1px solid var(--outline-variant);
+  border-radius: var(--radius-lg);
+  padding: 22px 24px;
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  transition: all 0.3s var(--ease-standard);
+  box-shadow: var(--shadow-1);
+}
+.cert-card:hover {
+  box-shadow: var(--shadow-3);
+  transform: translateY(-4px);
+  border-color: transparent;
+}
+.cert-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radius-sm);
+  background: linear-gradient(135deg, var(--g-blue-light), #E8F0FE);
+  color: var(--g-blue-dark);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.cert-icon.green { background: linear-gradient(135deg, #E6F4EA, #D7F5E1); color: var(--g-green); }
+.cert-badge {
+  display: inline-block;
+  font-size: 11px;
+  padding: 2px 8px;
+  background: var(--g-blue-light);
+  color: var(--g-blue-dark);
+  border-radius: var(--radius-full);
+  font-weight: 500;
+  margin-top: 6px;
+}
+.cert-badge.green { background: #E6F4EA; color: #137333; }
+.cert-title {
+  font-size: 15px;
+  font-weight: 600;
+  margin-bottom: 3px;
+  color: var(--on-surface);
+}
+.cert-meta {
+  font-size: 12px;
+  color: var(--on-surface-muted);
+  margin-bottom: 2px;
+}
+
+/* ===== API badges ===== */
+.api-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 20px;
+}
+.api-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 18px;
+  background: var(--surface);
+  border: 1px solid var(--outline-variant);
+  border-radius: var(--radius-full);
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--on-surface);
+  transition: all 0.25s var(--ease-standard);
+  box-shadow: var(--shadow-1);
+  cursor: default;
+}
+.api-badge:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-2);
+  border-color: transparent;
+}
+.api-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.api-dot.blue { background: var(--g-blue); }
+.api-dot.red { background: var(--g-red); }
+.api-dot.green { background: var(--g-green); }
+.api-dot.yellow { background: #B06000; }
+.api-dot.purple { background: #7627BB; }
+
+/* ===== Info row (병역·경험) ===== */
+.info-row-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 16px;
+  margin-top: 20px;
+}
+.info-row-card {
+  background: var(--surface);
+  border: 1px solid var(--outline-variant);
+  border-radius: var(--radius-lg);
+  padding: 22px 24px;
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+  box-shadow: var(--shadow-1);
+  transition: all 0.3s var(--ease-standard);
+}
+.info-row-card:hover {
+  box-shadow: var(--shadow-2);
+  border-color: transparent;
+  transform: translateY(-2px);
+}
+.info-row-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  background: var(--g-blue-light);
+  color: var(--g-blue-dark);
+}
+.info-row-icon.olive { background: linear-gradient(135deg, #E8F5E9, #C8E6C9); color: #2E7D32; }
+.info-row-icon.orange { background: linear-gradient(135deg, #FFF3E0, #FFE0B2); color: #E65100; }
+.info-row-title {
+  font-size: 15px;
+  font-weight: 600;
+  margin-bottom: 4px;
+  color: var(--on-surface);
+}
+.info-row-sub {
+  font-size: 13px;
+  color: var(--on-surface-variant);
+  line-height: 1.65;
+}
+
+/* ===== Tech stack grid ===== */
+.tech-stack-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(126px, 1fr));
+  gap: 10px;
+  margin-top: 20px;
+}
+.tech-item {
+  background: var(--surface);
+  border: 1px solid var(--outline-variant);
+  border-radius: var(--radius-md);
+  padding: 12px 14px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  transition: all 0.2s var(--ease-standard);
+  box-shadow: var(--shadow-1);
+}
+.tech-item:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-2);
+  border-color: transparent;
+}
+.tech-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.tech-item span:last-child {
+  font-size: 13px;
+  font-weight: 500;
+  font-family: 'Google Sans Code', monospace;
+  color: var(--on-surface);
+}
+
+/* ===== Download button ===== */
+.download-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 28px;
+  background: linear-gradient(135deg, var(--g-blue), var(--g-blue-dark));
+  color: white;
+  border-radius: var(--radius-full);
+  font-size: 15px;
+  font-weight: 500;
+  font-family: inherit;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  box-shadow: var(--shadow-2);
+  transition: all 0.3s var(--ease-standard);
+  margin-top: 8px;
+}
+.download-btn:hover {
+  box-shadow: var(--shadow-4);
+  transform: translateY(-3px);
+}
+
+/* ===== Accordion (알바 펼치기) ===== */
+.accordion-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  user-select: none;
+  gap: 8px;
+}
+.accordion-toggle .acc-arrow {
+  font-size: 18px;
+  color: var(--on-surface-muted);
+  transition: transform 0.3s var(--ease-standard);
+  flex-shrink: 0;
+}
+.accordion-body {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s var(--ease-standard);
+}
+.accordion-body.open {
+  max-height: 600px;
+}
+.accordion-toggle:hover .acc-arrow { color: var(--g-blue); }
+.acc-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 12px;
+  font-size: 13px;
+}
+.acc-table th {
+  text-align: left;
+  padding: 8px 10px;
+  background: var(--surface-2);
+  color: var(--on-surface-variant);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  border-bottom: 1px solid var(--outline-variant);
+}
+.acc-table td {
+  padding: 9px 10px;
+  border-bottom: 1px solid var(--outline-variant);
+  color: var(--on-surface);
+  line-height: 1.4;
+}
+.acc-table tr:last-child td { border-bottom: none; }
+.acc-table tr:hover td { background: var(--surface-1); }
+@media (max-width: 920px) {
+  .info-row-grid { grid-template-columns: 1fr; }
+  .cert-grid { grid-template-columns: 1fr; }
+  .timeline::before { left: 15px; }
+  .timeline-dot { width: 32px; height: 32px; }
+  .timeline-dot .material-symbols-rounded { font-size: 15px; }
+  .timeline-content { padding: 12px 16px; }
+  .timeline-title { font-size: 14px; }
+  .timeline-sub { font-size: 12px; }
+  .tech-stack-grid { grid-template-columns: repeat(auto-fill, minmax(110px, 1fr)); }
+  .api-grid { gap: 8px; }
+  .api-badge { padding: 8px 14px; font-size: 12px; }
+}
+@media (max-width: 480px) {
+  .tech-stack-grid { grid-template-columns: repeat(3, 1fr); }
+  .cert-card { flex-direction: column; gap: 12px; }
+  .info-row-card { padding: 16px; }
+  .download-btn { width: 100%; justify-content: center; padding: 14px 20px; font-size: 14px; }
+  .timeline { padding-left: 0; }
+  .timeline-item { gap: 12px; }
+}
 </style>
 </head>
 <body>
@@ -1541,6 +1901,233 @@ code, pre, .code {
           <p><strong>네트워크 관리사 2급</strong> (2023) · <strong>정보처리기사</strong> (2024)</p>
           <p><strong>외부 API 연동:</strong> Gemini, 기상청, Slack, Jira, Notion, Google Calendar, Kakao</p>
           <p><strong>PlayStore 배포 및 유지보수:</strong> 팡팡팡 앱</p>
+        </div>
+      </div>
+
+      <!-- Timeline -->
+      <div class="section-block reveal" style="margin-top:72px">
+        <div class="section-label">
+          <div class="section-label-dot"></div>
+          <h2>Timeline</h2>
+        </div>
+        <h3 class="section-title">학력 · 병역 · 경력 · 프로젝트</h3>
+        <div class="timeline">
+          <div class="timeline-item">
+            <div class="timeline-dot blue"><span class="material-symbols-rounded">school</span></div>
+            <div class="timeline-content">
+              <div class="timeline-period">2016.03 — 2018.02</div>
+              <div class="timeline-title">성안고등학교 졸업</div>
+              <div class="timeline-sub">경기도 안산 · 인문계</div>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-dot green"><span class="material-symbols-rounded">account_balance</span></div>
+            <div class="timeline-content">
+              <div class="timeline-period">2019.03 — 2025.02</div>
+              <div class="timeline-title">강원대학교 삼척캠퍼스 졸업</div>
+              <div class="timeline-sub">정보통신공학과 · 학점 3.68 / 4.5 · 이수학점 130</div>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-dot red"><span class="material-symbols-rounded">military_tech</span></div>
+            <div class="timeline-content">
+              <div class="timeline-period">2020.07 — 2022.01</div>
+              <div class="timeline-title">육군 병장 만기제대</div>
+              <div class="timeline-sub">K239 운용정비병 · 군필</div>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-dot yellow"><span class="material-symbols-rounded">work_history</span></div>
+            <div class="timeline-content">
+              <div class="accordion-toggle" onclick="toggleAcc(this)">
+                <div>
+                  <div class="timeline-period">2018 — 2024 · 총 1년 10개월</div>
+                  <div class="timeline-title">아르바이트 경험 <span style="font-size:12px;color:var(--on-surface-muted);font-weight:400">· 7곳</span></div>
+                  <div class="timeline-sub">제조 · 물류 · 판매 · 현장직 · 학교 방학 중 아르바이트</div>
+                </div>
+                <span class="material-symbols-rounded acc-arrow">expand_more</span>
+              </div>
+              <div class="accordion-body">
+                <table class="acc-table">
+                  <thead>
+                    <tr><th>기간</th><th>회사</th><th>업무</th></tr>
+                  </thead>
+                  <tbody>
+                    <tr><td>2024.07–08</td><td>이마트24</td><td>판매</td></tr>
+                    <tr><td>2023.06–08</td><td>시리얼 공장</td><td>곡물 분류 · 시럽 제조</td></tr>
+                    <tr><td>2023.01–02</td><td>코엔테크</td><td>디지털 장비 부품 분류</td></tr>
+                    <tr><td>2022.06–08</td><td>일성신약</td><td>물류 · 약 상자 제조 · 청소</td></tr>
+                    <tr><td>2019.12–2020.05</td><td>고양시 성사초 외벽공사</td><td>현장 소장 보조</td></tr>
+                    <tr><td>2019.04–06</td><td>미니스톱</td><td>편의점 아르바이트</td></tr>
+                    <tr><td>2018.12–2019.02</td><td>아이센스 PC방</td><td>PC방 관리</td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-dot blue"><span class="material-symbols-rounded">laptop_mac</span></div>
+            <div class="timeline-content">
+              <div class="timeline-period">2025.11 — 2026.05</div>
+              <div class="timeline-title">코리아 IT 아카데미 강남 수료</div>
+              <div class="timeline-sub">KDT — 랭체인_AI_영상객체탐지분석_플랫폼_구축 · 1,100시간</div>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-dot green"><span class="material-symbols-rounded">pets</span></div>
+            <div class="timeline-content">
+              <div class="timeline-period">2025.12 — 2026.01</div>
+              <div class="timeline-title">애완용품샵 · KDT 세미 팀프로젝트</div>
+              <div class="timeline-sub">FastAPI MVC · 트랜잭션 처리 · OpenAI 챗봇 · AWS RDS</div>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-dot green"><span class="material-symbols-rounded">eco</span></div>
+            <div class="timeline-content">
+              <div class="timeline-period">2026.01 — 2026.02</div>
+              <div class="timeline-title">팡팡팡 · 곰팡이 진단 AI 앱 · PlayStore 출시</div>
+              <div class="timeline-sub">FastAPI DDD · APScheduler · ChromaDB RAG · AWS EC2·S3·Route53 · 현재 운영 중</div>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-dot purple"><span class="material-symbols-rounded">groups</span></div>
+            <div class="timeline-content">
+              <div class="timeline-period">2026.04 — 2026.05</div>
+              <div class="timeline-title">WorkB · 회의 에이전트 웹서비스 · KDT 최종</div>
+              <div class="timeline-sub">OAuth 2.0 · BaseClient 상속 구조 · Docker Compose 5개 스택 · nginx HTTPS</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Certificates -->
+      <div class="section-block reveal">
+        <div class="section-label">
+          <div class="section-label-dot" style="background:var(--g-green)"></div>
+          <h2>자격증</h2>
+        </div>
+        <h3 class="section-title">보유 자격증</h3>
+        <div class="cert-grid">
+          <div class="cert-card">
+            <div class="cert-icon">
+              <span class="material-symbols-rounded">workspace_premium</span>
+            </div>
+            <div>
+              <div class="cert-title">정보처리기사</div>
+              <div class="cert-meta">한국산업인력공단</div>
+              <span class="cert-badge">2024.06 취득</span>
+            </div>
+          </div>
+          <div class="cert-card">
+            <div class="cert-icon green">
+              <span class="material-symbols-rounded">lan</span>
+            </div>
+            <div>
+              <div class="cert-title">네트워크관리사 2급</div>
+              <div class="cert-meta">한국정보통신자격협회</div>
+              <span class="cert-badge green">2023.06 취득</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Military & Part-time -->
+      <div class="section-block reveal">
+        <div class="section-label">
+          <div class="section-label-dot" style="background:var(--g-red)"></div>
+          <h2>병역 · 기타 경험</h2>
+        </div>
+        <div class="info-row-grid">
+          <div class="info-row-card">
+            <div class="info-row-icon olive">
+              <span class="material-symbols-rounded">military_tech</span>
+            </div>
+            <div>
+              <div class="info-row-title">육군 병장 만기제대</div>
+              <div class="info-row-sub">2020.07 — 2022.01<br>K239 운용정비병 · 군필</div>
+            </div>
+          </div>
+          <div class="info-row-card" style="flex-direction:column;gap:0;cursor:pointer" onclick="toggleAcc(this.querySelector('.accordion-toggle'))">
+            <div class="accordion-toggle" style="width:100%">
+              <div style="display:flex;align-items:flex-start;gap:16px">
+                <div class="info-row-icon orange" style="flex-shrink:0">
+                  <span class="material-symbols-rounded">work_history</span>
+                </div>
+                <div>
+                  <div class="info-row-title">아르바이트 경험 1년 10개월</div>
+                  <div class="info-row-sub">제조 · 물류 · 판매 · 현장직<br>학교 방학 중 아르바이트 · 7곳</div>
+                </div>
+              </div>
+              <span class="material-symbols-rounded acc-arrow" style="margin-top:4px">expand_more</span>
+            </div>
+            <div class="accordion-body">
+              <table class="acc-table">
+                <thead>
+                  <tr><th>기간</th><th>회사</th><th>업무</th></tr>
+                </thead>
+                <tbody>
+                  <tr><td>2024.07–08</td><td>이마트24</td><td>판매</td></tr>
+                  <tr><td>2023.06–08</td><td>시리얼 공장</td><td>곡물 분류 · 시럽 제조</td></tr>
+                  <tr><td>2023.01–02</td><td>코엔테크</td><td>디지털 장비 부품 분류</td></tr>
+                  <tr><td>2022.06–08</td><td>일성신약</td><td>물류 · 약 상자 제조</td></tr>
+                  <tr><td>2019.12–2020.05</td><td>고양시 성사초 외벽공사</td><td>현장 소장 보조</td></tr>
+                  <tr><td>2019.04–06</td><td>미니스톱</td><td>편의점 아르바이트</td></tr>
+                  <tr><td>2018.12–2019.02</td><td>아이센스 PC방</td><td>PC방 관리</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tech Stack -->
+      <div class="section-block reveal">
+        <div class="section-label">
+          <div class="section-label-dot" style="background:#7627BB"></div>
+          <h2>기술 스택</h2>
+        </div>
+        <h3 class="section-title">실무 프로젝트에서 직접 사용한 기술들</h3>
+        <div class="tech-stack-grid">
+          <div class="tech-item"><span class="tech-dot" style="background:#3776AB"></span><span>Python</span></div>
+          <div class="tech-item"><span class="tech-dot" style="background:#059669"></span><span>FastAPI</span></div>
+          <div class="tech-item"><span class="tech-dot" style="background:var(--g-blue)"></span><span>SQLAlchemy</span></div>
+          <div class="tech-item"><span class="tech-dot" style="background:#4479A1"></span><span>MySQL</span></div>
+          <div class="tech-item"><span class="tech-dot" style="background:#47A248"></span><span>MongoDB</span></div>
+          <div class="tech-item"><span class="tech-dot" style="background:#DC382D"></span><span>Redis</span></div>
+          <div class="tech-item"><span class="tech-dot" style="background:#FF9900"></span><span>AWS EC2</span></div>
+          <div class="tech-item"><span class="tech-dot" style="background:#FF9900"></span><span>AWS S3</span></div>
+          <div class="tech-item"><span class="tech-dot" style="background:#FF9900"></span><span>Route53</span></div>
+          <div class="tech-item"><span class="tech-dot" style="background:#2496ED"></span><span>Docker</span></div>
+          <div class="tech-item"><span class="tech-dot" style="background:#009639"></span><span>nginx</span></div>
+          <div class="tech-item"><span class="tech-dot" style="background:#8B5CF6"></span><span>ChromaDB</span></div>
+          <div class="tech-item"><span class="tech-dot" style="background:#4285F4"></span><span>Gemini API</span></div>
+          <div class="tech-item"><span class="tech-dot" style="background:#74AA9C"></span><span>OpenAI API</span></div>
+          <div class="tech-item"><span class="tech-dot" style="background:#F97316"></span><span>APScheduler</span></div>
+          <div class="tech-item"><span class="tech-dot" style="background:#E8912D"></span><span>OAuth 2.0</span></div>
+          <div class="tech-item"><span class="tech-dot" style="background:#FBBC04"></span><span>Kakao API</span></div>
+          <div class="tech-item"><span class="tech-dot" style="background:#F05032"></span><span>Git / GitHub</span></div>
+        </div>
+      </div>
+
+      <!-- External API -->
+      <div class="section-block reveal">
+        <div class="section-label">
+          <div class="section-label-dot" style="background:var(--g-yellow)"></div>
+          <h2>외부 API 연동 경험</h2>
+        </div>
+        <h3 class="section-title">직접 연동·운용해본 외부 서비스</h3>
+        <div class="api-grid">
+          <div class="api-badge"><span class="api-dot blue"></span>Google Gemini 2.5</div>
+          <div class="api-badge"><span class="api-dot green"></span>기상청 단기예보</div>
+          <div class="api-badge"><span class="api-dot purple"></span>Slack OAuth 2.0</div>
+          <div class="api-badge"><span class="api-dot blue"></span>Google Calendar</div>
+          <div class="api-badge"><span class="api-dot blue"></span>Jira REST API</div>
+          <div class="api-badge"><span class="api-dot yellow"></span>Kakao OAuth / Map</div>
+          <div class="api-badge"><span class="api-dot red"></span>OpenAI API</div>
+          <div class="api-badge"><span class="api-dot blue"></span>Notion API</div>
+          <div class="api-badge"><span class="api-dot red"></span>Firebase FCM</div>
+          <div class="api-badge"><span class="api-dot green"></span>Google PlayStore</div>
+          <div class="api-badge"><span class="api-dot blue"></span>Google Drive API</div>
         </div>
       </div>
     </div>
@@ -2186,44 +2773,50 @@ code, pre, .code {
       </header>
 
       <div class="contact-grid reveal">
-        <ul class="contact-list">
-          <a href="mailto:dejung71020@gmail.com" class="contact-item">
-            <div class="contact-icon red">
-              <span class="material-symbols-rounded">mail</span>
-            </div>
-            <div>
-              <h4>이메일</h4>
-              <p>dejung71020@gmail.com</p>
-            </div>
+        <div>
+          <ul class="contact-list">
+            <a href="mailto:dejung71020@gmail.com" class="contact-item">
+              <div class="contact-icon red">
+                <span class="material-symbols-rounded">mail</span>
+              </div>
+              <div>
+                <h4>이메일</h4>
+                <p>dejung71020@gmail.com</p>
+              </div>
+            </a>
+            <a href="tel:01097451519" class="contact-item">
+              <div class="contact-icon blue">
+                <span class="material-symbols-rounded">call</span>
+              </div>
+              <div>
+                <h4>연락처</h4>
+                <p>010-9745-1519</p>
+              </div>
+            </a>
+            <a href="https://www.notion.so/31266e601b8381f597c4d7bcddc08e7f?source=copy_link" target="_blank" rel="noopener noreferrer" class="contact-item">
+              <div class="contact-icon yellow">
+                <span class="material-symbols-rounded">edit_note</span>
+              </div>
+              <div>
+                <h4>홈페이지 · 노션</h4>
+                <p>이대중의 노션 페이지 →</p>
+              </div>
+            </a>
+            <a href="https://github.com/dejung71020" target="_blank" class="contact-item">
+              <div class="contact-icon green">
+                <span class="material-symbols-rounded">code</span>
+              </div>
+              <div>
+                <h4>GitHub</h4>
+                <p>github.com/dejung71020</p>
+              </div>
+            </a>
+          </ul>
+          <a href="../이대중_포트폴리오.pdf" class="download-btn" download style="margin-top:16px">
+            <span class="material-symbols-rounded" style="font-size:20px">download</span>
+            포트폴리오 PDF 다운로드
           </a>
-          <a href="tel:01097451519" class="contact-item">
-            <div class="contact-icon blue">
-              <span class="material-symbols-rounded">call</span>
-            </div>
-            <div>
-              <h4>연락처</h4>
-              <p>010-9745-1519</p>
-            </div>
-          </a>
-          <a href="https://www.notion.so/31266e601b8381f597c4d7bcddc08e7f?source=copy_link" target="_blank" rel="noopener noreferrer" class="contact-item">
-            <div class="contact-icon yellow">
-              <span class="material-symbols-rounded">edit_note</span>
-            </div>
-            <div>
-              <h4>홈페이지 · 노션</h4>
-              <p>이대중의 노션 페이지 →</p>
-            </div>
-          </a>
-          <a href="https://github.com/dejung71020" target="_blank" class="contact-item">
-            <div class="contact-icon green">
-              <span class="material-symbols-rounded">code</span>
-            </div>
-            <div>
-              <h4>GitHub</h4>
-              <p>github.com/dejung71020</p>
-            </div>
-          </a>
-        </ul>
+        </div>
 
         <div class="repos-grid">
           <div class="repo-card">
@@ -2265,6 +2858,15 @@ code, pre, .code {
 </main>
 
 <script>
+// ===== Accordion =====
+function toggleAcc(el) {
+  const body = el.closest('.timeline-content, .info-row-card').querySelector('.accordion-body');
+  const arrow = el.querySelector('.acc-arrow');
+  const isOpen = body.classList.contains('open');
+  body.classList.toggle('open', !isOpen);
+  if (arrow) arrow.style.transform = isOpen ? '' : 'rotate(180deg)';
+}
+
 // ===== Routing & Page Transitions =====
 const pages = ['home', 'about', 'meeting', 'mold', 'petshop', 'wallet', 'contact'];
 
