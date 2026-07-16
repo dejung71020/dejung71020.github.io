@@ -1,0 +1,72 @@
+body {
+  overflow-x: hidden;
+}
+
+.hero > *,
+.case-hero > *,
+.section-heading > * {
+  min-width: 0;
+}
+
+.hero h1,
+.case-hero h1,
+.page-hero h1,
+.section-heading h2,
+.proof-title {
+  overflow-wrap: anywhere;
+}
+
+.hero-proof {
+  width: 100%;
+  max-width: 100%;
+}
+
+@media (max-width: 900px) {
+  .hero {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+  }
+}
+
+@media (max-width: 620px) {
+  nav {
+    min-width: 0;
+    gap: 8px;
+  }
+
+  nav a {
+    font-size: 11px;
+  }
+
+  .nav-contact {
+    padding: 7px 9px;
+  }
+
+  .hero {
+    gap: 36px;
+    padding-top: 54px;
+  }
+
+  .hero h1,
+  .case-hero h1,
+  .page-hero h1 {
+    font-size: clamp(40px, 12vw, 52px);
+    line-height: 1.02;
+  }
+
+  .hero-proof {
+    padding: 22px;
+    border-radius: 22px;
+  }
+
+  .proof-title {
+    margin: 24px 0 30px;
+    font-size: 22px;
+  }
+
+  .section-heading h2 {
+    font-size: 36px;
+    letter-spacing: -1.8px;
+  }
+}
