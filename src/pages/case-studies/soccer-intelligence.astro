@@ -1,0 +1,12 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import CaseStudy from '../../ui/organisms/CaseStudy.astro';
+---
+<BaseLayout title="Soccer Intelligence Lite — Daejung Lee" description="하나의 계약으로 FastAPI와 Astro 경기 화면을 연결하는 사례">
+  <CaseStudy eyebrow="CONTRACT · FASTAPI + ASTRO" title="한 계약으로 연결한 경기 인텔리전스" summary="합성 fixture 하나가 경기 목록 API와 상세 API, Astro의 목록·분석 화면에 동일한 언어로 이어집니다." image="/evidence/soccer-fieldnote.webp" imageAlt="Soccer Intelligence Lite 경기 목록 실제 화면" tags={['FastAPI','Astro 7','Synthetic data']} sourceHref="https://github.com/dejung71020/soccer-intelligence-lite">
+    <h2>사용자 결과</h2><p>날짜별 경기 목록에서 한 경기를 선택해 점유율, 슈팅, 기대 득점의 비교와 데이터 출처를 확인합니다.</p>
+    <h2>계약과 구성</h2><ul><li><code>GET /matches?date=</code>와 <code>GET /matches/{'{id}'}</code>를 공개 경계로 둡니다.</li><li>FastAPI는 읽기 projection만 제공하고 Astro는 정적 화면을 구성합니다.</li><li>모든 팀명과 수치는 실제 제공사 데이터가 아닌 synthetic fixture입니다.</li></ul>
+    <div class="evidence-panel"><div><small>CONTRACT</small><strong>OpenAPI 3.1</strong></div><div><small>BACKEND</small><strong>FastAPI read API</strong></div><div><small>FRONTEND</small><strong>Astro static UI</strong></div></div>
+    <h2>검증</h2><p>날짜 필터, 잘못된 날짜, 존재하지 않는 경기의 응답을 API 행동 소유자 곁에서 테스트하고 Astro의 타입 검사와 production build를 함께 통과시킵니다.</p>
+  </CaseStudy>
+</BaseLayout>

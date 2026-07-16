@@ -1,0 +1,43 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ArchitectureDiagram from '../ui/molecules/ArchitectureDiagram.astro';
+import StatusTag from '../ui/atoms/StatusTag.astro';
+const projects = [
+  {href:'/case-studies/production-refactoring',image:'/evidence/yamon-home.webp',meta:'PRODUCTION · YAMON',title:'운영 리팩터링',description:'공개 서비스를 유지하면서 변경을 복구 가능한 작은 증거로 나눕니다.',tags:['Architecture','Recovery']},
+  {href:'/case-studies/wallet-os',image:'/evidence/wallet-os.webp',meta:'LOCAL FIRST · EXPO',title:'Wallet OS Lite',description:'급여 입력부터 목적별 배분과 월 정산까지, 기기 안에서 닫히는 수직 기능입니다.',tags:['TypeScript','SQLite']},
+  {href:'/case-studies/soccer-intelligence',image:'/evidence/soccer-fieldnote.webp',meta:'CONTRACT · FASTAPI + ASTRO',title:'Soccer Intelligence Lite',description:'하나의 fixture 계약이 API와 경기 목록·상세 화면까지 이어집니다.',tags:['FastAPI','Astro 7']},
+  {href:'/projects/workb',image:'/evidence/workb.webp',meta:'MEETING INTELLIGENCE',title:'WorkB',description:'회의 준비와 기록, 액션 아이템을 실제 업무 도구로 이어주는 협업 서비스입니다.',tags:['FastAPI','Integration']},
+];
+---
+<BaseLayout>
+  <section class="hero">
+    <div>
+      <p class="eyebrow">AI-NATIVE BACKEND & PLATFORM ENGINEER</p>
+      <h1>빠르게 만들고,<em>끝까지 다듬습니다.</em></h1>
+      <p class="hero-copy">Vibe Carving으로 AI 개발을 구조·계약·테스트·배포·관측·복구가 가능한 시스템으로 다듬는 Daejung Lee(이대중)입니다.</p>
+      <div class="hero-actions"><a class="btn btn-carving" href="#work">대표 사례 보기</a><a class="btn btn-ghost-carving" href="/vibe-carving">작업 방식 읽기</a></div>
+    </div>
+    <aside class="hero-proof" aria-label="엔지니어링 증거 요약">
+      <div class="proof-head"><span>PRODUCTION MINDSET</span><span>2026</span></div>
+      <p class="proof-title">생성 속도가 아니라<br />운영 가능한 완성도를 증명합니다.</p>
+      <div class="proof-grid"><div><b>Contract</b><span>경계와 언어</span></div><div><b>Evidence</b><span>테스트와 실제 화면</span></div><div><b>Delivery</b><span>재현 가능한 배포</span></div><div><b>Recovery</b><span>실행해 본 복구</span></div></div>
+    </aside>
+  </section>
+
+  <section class="architecture-section">
+    <div class="section-heading"><p class="eyebrow">THE METHOD</p><div><h2>Prompt에서 운영 증거까지<br />하나의 흐름으로 연결합니다.</h2><p>AI와의 작업을 결과물 생성에서 멈추지 않고, 가장 작은 사용자 결과와 공개 계약을 기준으로 반복해서 carving합니다.</p></div></div>
+    <ArchitectureDiagram />
+  </section>
+
+  <section class="work-section" id="work">
+    <div class="section-heading"><p class="eyebrow">SELECTED WORK</p><div><h2>설명보다<br />작동하는 증거.</h2><p>공개 서비스 화면, 실행 가능한 Lite 저장소, 테스트와 복구 기록을 함께 제시합니다.</p></div></div>
+    <div class="work-grid">
+      {projects.map((project) => <a class="project-card" href={project.href}><img src={project.image} alt={`${project.title} 실제 UI`} width="640" height="400" loading="lazy" /><div class="project-card-copy"><div class="project-card-meta"><span class="eyebrow">{project.meta}</span><span>↗</span></div><h3>{project.title}</h3><p>{project.description}</p><div class="tag-row" style="margin-top:18px">{project.tags.map((tag) => <StatusTag label={tag} />)}</div></div></a>)}
+    </div>
+  </section>
+
+  <section class="principles">
+    <div class="section-heading"><p class="eyebrow">ENGINEERING PRINCIPLES</p><div><h2>현업에서 지키는<br />세 가지 기준.</h2></div></div>
+    <div class="principle-grid"><article class="principle-card"><span>01</span><h3>경계가 먼저다</h3><p>프레임워크보다 사용자 결과와 소유권, 공개 계약을 먼저 고정합니다.</p></article><article class="principle-card"><span>02</span><h3>증거가 완료다</h3><p>테스트, production build, 실제 화면, 관측 가능한 상태가 완료 조건입니다.</p></article><article class="principle-card"><span>03</span><h3>복구도 기능이다</h3><p>배포 전에 원래 상태로 돌아가는 절차를 실행하고 기록합니다.</p></article></div>
+  </section>
+</BaseLayout>

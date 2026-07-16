@@ -1,0 +1,12 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import CaseStudy from '../../ui/organisms/CaseStudy.astro';
+---
+<BaseLayout title="Production Refactoring — Daejung Lee" description="YAMON 공개 홈페이지 환경에서 얻은 익명화된 운영 리팩터링 원칙">
+  <CaseStudy eyebrow="PRODUCTION REFACTORING · YAMON" title="운영을 멈추지 않는 구조 개선" summary="회사명과 공개 홈페이지 화면만 사용하고, 고객·관리자·내부 구현은 제외한 개인 기술 사례입니다." image="/evidence/yamon-home.webp" imageAlt="YAMON 공개 홈페이지에 게시된 스마트 파킹 프로젝트 이미지" tags={['Public surface','Anonymized','Recovery']} sourceLabel="공개 YAMON 홈페이지 보기" sourceHref="https://yageun.com/home" evidenceLabel="PUBLIC WEBSITE ASSET · yageun.com/home · 2026-07-16">
+    <h2>문제</h2><p>AI가 넓은 변경을 빠르게 만들 수 있어도, 공개 서비스가 계속 동작해야 한다는 제약은 사라지지 않습니다. 구조 개선은 코드 모양보다 배포 단위와 복구 가능성으로 판단했습니다.</p>
+    <h2>결정</h2><ul><li>사용자 결과 하나를 기준으로 변경 범위를 자릅니다.</li><li>공개 계약과 호환 검사를 먼저 고정합니다.</li><li>같은 산출물을 Staging에서 배포하고 복구합니다.</li><li>내부 코드와 운영 데이터를 포트폴리오 증거로 사용하지 않습니다.</li></ul>
+    <div class="evidence-panel"><div><small>BOUNDARY</small><strong>Public UI only</strong></div><div><small>RELEASE</small><strong>Staged gates</strong></div><div><small>RECOVERY</small><strong>Tree match</strong></div></div>
+    <h2>공개 가능한 증거</h2><p>공개 홈페이지 화면, 저장소의 독립적인 복구 리허설, production build와 URL smoke 결과처럼 다른 사람이 재현할 수 있는 관측만 제시합니다. 회사 내부 성과 수치나 고객 정보는 포함하지 않습니다.</p>
+  </CaseStudy>
+</BaseLayout>

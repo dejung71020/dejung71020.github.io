@@ -1,0 +1,5 @@
+---
+interface Props { label: string; tone?: 'green' | 'blue' | 'amber'; }
+const { label, tone = 'green' } = Astro.props;
+---
+<span class:list={['status-tag', `status-${tone}`]}>{label}</span>

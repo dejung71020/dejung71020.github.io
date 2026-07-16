@@ -1,0 +1,78 @@
+---
+import '../styles/global.css';
+
+interface Props {
+  title?: string;
+  description?: string;
+  image?: string;
+}
+
+const {
+  title = 'Daejung Lee — AI 네이티브 백엔드·플랫폼 엔지니어',
+  description = 'Vibe Carving으로 AI 개발을 검증·배포·운영 가능한 시스템으로 다듬는 Daejung Lee의 포트폴리오',
+  image = '/evidence/wallet-os.webp',
+} = Astro.props;
+const canonical = new URL(Astro.url.pathname, Astro.site);
+const socialImage = new URL(image, Astro.site);
+const structuredData = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name: 'Daejung Lee',
+  alternateName: '이대중',
+  url: 'https://dejung71020.github.io',
+  jobTitle: 'AI 네이티브 백엔드·플랫폼 엔지니어',
+  worksFor: { '@type': 'Organization', name: 'YAMON' },
+  sameAs: ['https://github.com/dejung71020'],
+};
+---
+<!doctype html>
+<html lang="ko" data-theme="carving">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description} />
+    <meta name="theme-color" content="#f3f0e8" />
+    <link rel="canonical" href={canonical} />
+    <link rel="icon" href="/icons/favicon.svg" type="image/svg+xml" />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="ko_KR" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={socialImage} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={socialImage} />
+    <script is:inline type="application/ld+json" set:html={JSON.stringify(structuredData)} />
+    <title>{title}</title>
+  </head>
+  <body>
+    <a class="skip-link" href="#content">본문으로 이동</a>
+    <header class="site-header">
+      <a class="wordmark" href="/" aria-label="Daejung Lee 홈">DL<span>/VC</span></a>
+      <nav aria-label="주요 메뉴">
+        <a href="/vibe-carving">Vibe Carving</a>
+        <a href="/#work">Work</a>
+        <a href="/about">About</a>
+        <a class="nav-contact" href="/contact">Contact</a>
+      </nav>
+    </header>
+    <main id="content"><slot /></main>
+    <footer class="site-footer">
+      <div><strong>Daejung Lee</strong><p>AI 네이티브 백엔드·플랫폼 엔지니어</p></div>
+      <div class="footer-links"><a href="https://github.com/dejung71020">GitHub</a><a href="mailto:dejung71020@gmail.com">Email</a><a href="/contact">Contact</a></div>
+      <small>© 2026 Daejung Lee. Built as static Astro, with evidence over decoration.</small>
+    </footer>
+    <script is:inline>
+      const redirects = {
+        '#meeting': '/projects/workb',
+        '#mold': '/projects/pangpangpang',
+        '#wallet': '/case-studies/wallet-os',
+        '#contact': '/contact',
+      };
+      const target = redirects[window.location.hash];
+      if (target && window.location.pathname === '/') window.location.replace(target);
+    </script>
+  </body>
+</html>

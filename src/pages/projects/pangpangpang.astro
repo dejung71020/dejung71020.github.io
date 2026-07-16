@@ -1,0 +1,10 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import CaseStudy from '../../ui/organisms/CaseStudy.astro';
+---
+<BaseLayout title="팡팡팡 — Daejung Lee" description="곰팡이 진단부터 해결 연결까지 이어지는 모바일 서비스">
+  <CaseStudy eyebrow="MOBILE AI SERVICE · QUAIL" title="팡팡팡" summary="사진 기반 곰팡이 진단에서 위험 안내와 해결 흐름까지 연결한 운영 경험입니다." image="/evidence/pangpangpang.webp" imageAlt="팡팡팡 곰팡이 위험도 모바일 화면" tags={['FastAPI','AI diagnosis','Mobile']} sourceLabel="백엔드 저장소 보기" sourceHref="https://github.com/dejung71020/QUAIL_BACK-END" imageFit="contain" evidenceLabel="REAL UI · public Google Play screenshot · 2026-07-16">
+    <h2>서비스 흐름</h2><p>사용자는 사진을 올리고 진단 결과와 위험 정보를 확인한 뒤 다음 행동으로 이동합니다. 백엔드는 업로드와 모델 호출, 결과 계약의 경계를 담당합니다.</p>
+    <h2>담당 관점</h2><ul><li>진단 결과의 안전한 응답 형태와 실패 처리</li><li>모바일 클라이언트가 소비할 API 경계</li><li>배포 환경과 외부 모델 연동의 분리</li></ul>
+  </CaseStudy>
+</BaseLayout>

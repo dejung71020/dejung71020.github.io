@@ -1,0 +1,70 @@
+{
+  "schema_version": 1,
+  "captured_at": "2026-07-16T00:00:00+09:00",
+  "policy": "Real public or locally built UI only; synthetic test data; metadata stripped; no admin or customer surfaces.",
+  "captures": [
+    {
+      "project": "YAMON public homepage",
+      "route": "https://yageun.com/home",
+      "viewport": "1440x900",
+      "source_revision": "public deployed page observed 2026-07-16",
+      "fixture": "public content",
+      "redacted": false,
+      "output": "public/evidence/yamon-home.webp"
+    },
+    {
+      "project": "Wallet OS Lite",
+      "route": "local Expo web root",
+      "viewport": "1440x900",
+      "source_revision": "21efe66f8953fcf4195a595f3b4209bcead362d0",
+      "fixture": "salary 4,200,000 KRW",
+      "redacted": false,
+      "output": "public/evidence/wallet-os.webp"
+    },
+    {
+      "project": "Soccer Intelligence Lite",
+      "route": "local Astro root",
+      "viewport": "1440x900",
+      "source_revision": "a787e4825c2accb09441c3d54136d8020a08640b",
+      "fixture": "contract/fixtures/matches.json",
+      "redacted": false,
+      "output": "public/evidence/soccer-fieldnote.webp"
+    },
+    {
+      "project": "Wallet OS Lite mobile",
+      "route": "https://dejung71020.github.io/wallet-os-lite/",
+      "viewport": "390x844",
+      "source_revision": "21efe66f8953fcf4195a595f3b4209bcead362d0",
+      "fixture": "salary 4,200,000 KRW",
+      "redacted": false,
+      "output": "public/evidence/wallet-os-mobile.webp"
+    },
+    {
+      "project": "Soccer Intelligence Lite mobile",
+      "route": "https://dejung71020.github.io/soccer-intelligence-lite/",
+      "viewport": "390x844",
+      "source_revision": "a787e4825c2accb09441c3d54136d8020a08640b",
+      "fixture": "contract/fixtures/matches.json",
+      "redacted": false,
+      "output": "public/evidence/soccer-fieldnote-mobile.webp"
+    },
+    {
+      "project": "WorkB",
+      "route": "archived project UI evidence",
+      "viewport": "source capture",
+      "source_revision": "pre-vibe-carving portfolio baseline",
+      "fixture": "reviewed project presentation data",
+      "redacted": true,
+      "output": "public/evidence/workb.webp"
+    },
+    {
+      "project": "Pangpangpang",
+      "route": "archived mobile app evidence",
+      "viewport": "source capture",
+      "source_revision": "pre-vibe-carving portfolio baseline",
+      "fixture": "reviewed project presentation data",
+      "redacted": true,
+      "output": "public/evidence/pangpangpang.webp"
+    }
+  ]
+}

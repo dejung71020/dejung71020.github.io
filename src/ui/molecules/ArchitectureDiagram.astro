@@ -1,0 +1,18 @@
+---
+interface Props { compact?: boolean; }
+const { compact = false } = Astro.props;
+const steps = [
+  ['01', 'Prompt', '사용자 결과'],
+  ['02', 'Slice', '최소 완성 흐름'],
+  ['03', 'Contract', '공개 경계'],
+  ['04', 'Test', '깨지지 않을 약속'],
+  ['05', 'Deploy', '재현 가능한 산출물'],
+  ['06', 'Observe', '운영의 관측'],
+  ['07', 'Carve', '다음 변경의 여지'],
+];
+---
+<div class:list={['architecture-flow', compact && 'architecture-flow-compact']} aria-label="Vibe Carving 작업 흐름">
+  {steps.map(([number, name, detail]) => (
+    <div class="flow-node"><small>{number}</small><strong>{name}</strong><span>{detail}</span></div>
+  ))}
+</div>
