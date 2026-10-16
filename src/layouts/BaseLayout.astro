@@ -1,79 +1,36 @@
 ---
 import '../styles/global.css';
-import '../styles/responsive.css';
-
-interface Props {
-  title?: string;
-  description?: string;
-  image?: string;
-}
-
-const {
-  title = 'Daejung Lee — AI 네이티브 백엔드·플랫폼 엔지니어',
-  description = 'Vibe Carving으로 AI 개발을 검증·배포·운영 가능한 시스템으로 다듬는 Daejung Lee의 포트폴리오',
-  image = '/evidence/wallet-os.webp',
-} = Astro.props;
-const canonical = new URL(Astro.url.pathname, Astro.site);
-const socialImage = new URL(image, Astro.site);
-const structuredData = {
-  '@context': 'https://schema.org',
-  '@type': 'Person',
-  name: 'Daejung Lee',
-  alternateName: '이대중',
-  url: 'https://dejung71020.github.io',
-  jobTitle: 'AI 네이티브 백엔드·플랫폼 엔지니어',
-  worksFor: { '@type': 'Organization', name: 'YAMON' },
-  sameAs: ['https://github.com/dejung71020'],
-};
+interface Props { title?: string; description?: string; }
+const { title = 'dejung71020 — 디자인부터 웹·앱·API까지', description = 'YAMON 홈페이지, 팡팡팡, 회의 에이전트. 실제 화면과 작업 범위로 소개하는 dejung71020의 개발 포트폴리오.' } = Astro.props;
 ---
 <!doctype html>
-<html lang="ko" data-theme="carving">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="description" content={description} />
-    <meta name="theme-color" content="#f3f0e8" />
-    <link rel="canonical" href={canonical} />
-    <link rel="icon" href="/icons/favicon.svg" type="image/svg+xml" />
-    <meta property="og:type" content="website" />
-    <meta property="og:locale" content="ko_KR" />
-    <meta property="og:title" content={title} />
-    <meta property="og:description" content={description} />
-    <meta property="og:url" content={canonical} />
-    <meta property="og:image" content={socialImage} />
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content={title} />
-    <meta name="twitter:description" content={description} />
-    <meta name="twitter:image" content={socialImage} />
-    <script is:inline type="application/ld+json" set:html={JSON.stringify(structuredData)} />
-    <title>{title}</title>
-  </head>
-  <body>
-    <a class="skip-link" href="#content">본문으로 이동</a>
-    <header class="site-header">
-      <a class="wordmark" href="/" aria-label="Daejung Lee 홈">DL<span>/VC</span></a>
-      <nav aria-label="주요 메뉴">
-        <a href="/vibe-carving">Vibe Carving</a>
-        <a href="/#work">Work</a>
-        <a href="/about">About</a>
-        <a class="nav-contact" href="/contact">Contact</a>
-      </nav>
-    </header>
-    <main id="content"><slot /></main>
-    <footer class="site-footer">
-      <div><strong>Daejung Lee</strong><p>AI 네이티브 백엔드·플랫폼 엔지니어</p></div>
-      <div class="footer-links"><a href="https://github.com/dejung71020">GitHub</a><a href="mailto:dejung71020@gmail.com">Email</a><a href="/contact">Contact</a></div>
-      <small>© 2026 Daejung Lee. Built as static Astro, with evidence over decoration.</small>
-    </footer>
-    <script is:inline>
-      const redirects = {
-        '#meeting': '/projects/workb',
-        '#mold': '/projects/pangpangpang',
-        '#wallet': '/case-studies/wallet-os',
-        '#contact': '/contact',
-      };
-      const target = redirects[window.location.hash];
-      if (target && window.location.pathname === '/') window.location.replace(target);
-    </script>
-  </body>
-</html>
+<html lang="ko">
+<head><meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1" /><title>{title}</title><meta name="description" content={description} /><meta name="theme-color" content="#f4f5ef" /></head>
+<body>
+<a class="skip-link" href="#content">본문으로 이동</a>
+<header class="site-header"><a class="wordmark" href="/" aria-label="dejung71020 홈">d<span>l.</span></a><span class="header-note">INDEPENDENT MIND.<br />CONNECTED EXPERIENCE.</span><nav aria-label="주요 메뉴"><a href="/#work">작업<span>03</span></a><a href="/#approach">방식</a><a href="/about">소개</a><a class="nav-contact" href="/contact">협업 <span aria-hidden="true">↗</span></a></nav></header>
+<main id="content" tabindex="-1"><slot /></main>
+<dialog class="image-dialog" aria-labelledby="image-dialog-title"><div class="dialog-bar"><span id="image-dialog-title">프로젝트 화면</span><button type="button" class="dialog-close" aria-label="확대 화면 닫기">닫기 <span aria-hidden="true">×</span></button></div><div class="dialog-image-wrap"><img alt="" /></div></dialog>
+<script is:inline>
+  const imageDialog = document.querySelector('.image-dialog');
+  document.querySelectorAll('.case-image').forEach(image => {
+    const button = document.createElement('button');
+    button.type = 'button';
+    button.className = 'image-inspect';
+    button.setAttribute('aria-label', image.alt + ' 크게 보기');
+    image.before(button);
+    button.append(image);
+    const hint = document.createElement('span');
+    hint.className = 'inspect-hint'; hint.textContent = '화면 크게 보기 ↗'; button.append(hint);
+    button.addEventListener('click', () => {
+      const enlarged = imageDialog.querySelector('img');
+      enlarged.src = image.currentSrc || image.src; enlarged.alt = image.alt;
+      imageDialog.querySelector('#image-dialog-title').textContent = image.alt;
+      imageDialog.showModal();
+    });
+  });
+  imageDialog.querySelector('.dialog-close').addEventListener('click', () => imageDialog.close());
+  imageDialog.addEventListener('click', event => { if (event.target === imageDialog) imageDialog.close(); });
+</script>
+<footer class="site-footer"><a class="footer-name" href="/">dejung71020<span>DESIGN × DEVELOPMENT</span></a><span>© 2026 · 공개 가능한 작업과 확인된 범위.</span><a href="#content" aria-label="본문 맨 위로 이동">BACK TO TOP ↑</a></footer>
+</body></html>

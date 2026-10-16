@@ -1,18 +1,14 @@
 # dejung71020.github.io
 
-Daejung Lee의 AI 네이티브 백엔드·플랫폼 엔지니어 포트폴리오입니다.
+웹·앱 UI와 API·AI 연동 작업을 소개하는 정적 포트폴리오입니다.
 
-- Astro 7 static pages
-- Tailwind CSS Vite plugin + daisyUI
-- GitHub Actions → GitHub Pages
-- 실제 공개/로컬 UI 증거와 capture manifest
-- SEO, sitemap, structured data, keyboard and reduced-motion support
-- 공개 전 secret/PII/internal-host scan
+대표작: YAMON 홈페이지 UI · 팡팡팡 웹·앱 · 회의 에이전트.
+공개 이름은 GitHub ID를 사용하며 실명·개인 연락처·학력·재직 정보는 게재하지 않습니다.
 
 ```bash
-npm install
+npm ci
 npm run verify
-npm run dev
 ```
 
-배포 전 기준점은 `pre-vibe-carving-20260716` 태그와 별도의 미러·Git Bundle에 보존되어 있습니다.
+Astro · React 프로젝트 사례 · Tailwind CSS · GitHub Pages.
+실제 화면의 자료 출처와 개인 담당 범위·검증 한계는 각 사례에 표시합니다.

@@ -1,7 +1,8 @@
+import { fileURLToPath } from 'node:url';
 import { existsSync, readFileSync, readdirSync, statSync } from 'node:fs';
 import { dirname, extname, join, normalize, relative } from 'node:path';
 
-const dist = new URL('../dist', import.meta.url).pathname;
+const dist = fileURLToPath(new URL('../dist', import.meta.url));
 const htmlFiles = [];
 function walk(directory) {
   for (const name of readdirSync(directory)) {

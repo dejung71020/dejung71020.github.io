@@ -1,0 +1,9 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+---
+<BaseLayout title="금액 배분 데모 — dejung71020">
+<section class="page-heading"><p class="eyebrow">INDEPENDENT DEMO · TYPESCRIPT / EXPO</p><h1>금액 배분</h1><p>입력 금액을 목적별로 나누고, 배분 합계가 원금과 일치하도록 만든 개인 데모입니다.</p></section>
+<img class="case-image" src="/evidence/allocation.png" alt="금액 배분 웹 데모 실제 화면" width="1440" height="900" />
+<section class="detail-grid"><article><h2>핵심 결정</h2><p>각 항목을 반올림하면 합계에 오차가 생길 수 있습니다. 앞선 항목을 내림 처리하고 마지막 항목에 잔여액을 배정해 합계를 유지합니다.</p><h2>검증 범위</h2><p>합계 보존, 배분 비율 오류, 정산 잔여액에 대한 단위 테스트와 TypeScript·웹 빌드 구성을 제공합니다.</p></article><article><h2>한계</h2><p>최근 정산 한 건을 저장하는 데모입니다. 기기별 동작·저장 실패·다시 열기 동작까지 자동 검증한 제품은 아닙니다.</p><h2>코드와 데모</h2><p><a href="https://github.com/dejung71020/wallet-os-lite">저장소 ↗</a> · <a href="https://dejung71020.github.io/wallet-os-lite/">웹 데모 ↗</a></p><p><a href="https://github.com/dejung71020/wallet-os-lite/tree/main/src/wallet">배분 로직·테스트 ↗</a></p></article></section>
+<a class="back-link" href="/#work">← 전체 작업</a>
+</BaseLayout>

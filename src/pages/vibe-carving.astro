@@ -1,10 +1,4 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import ArchitectureDiagram from '../ui/molecules/ArchitectureDiagram.astro';
-const cards=[['01','Outcome before output','파일을 만들기 전에 어떤 사용자의 어떤 결과를 끝낼지 정합니다.'],['02','Smallest complete slice','레이어 한 조각이 아니라 입력부터 관측 가능한 결과까지 닫히는 흐름을 선택합니다.'],['03','Contract as boundary','타입·API·오류 언어로 소유권을 고정하고 내부 구현이 새지 않게 합니다.'],['04','Evidence with the owner','테스트를 행동 소유자 곁에 두고 성공·거부·복구 경로를 함께 증명합니다.'],['05','One artifact, one release','잠금 파일과 같은 빌드 입력으로 산출물을 만들고 환경별 재빌드를 피합니다.'],['06','Observe and carve again','운영에서 확인된 드리프트와 중복만 다음 carving 대상으로 삼습니다.']];
 ---
-<BaseLayout title="Vibe Carving — Daejung Lee" description="AI 개발을 운영 가능한 시스템으로 다듬는 Vibe Carving 작업 방식">
-  <header class="page-hero"><p class="eyebrow">VIBE CARVING</p><h1>AI가 만든 속도에<br />엔지니어링의 방향을 새깁니다.</h1><p>Vibe Coding의 빠른 탐색을 버리지 않습니다. 대신 결과·경계·검증·배포·관측·복구를 반복해 현업에서 소유할 수 있는 시스템으로 다듬습니다.</p></header>
-  <ArchitectureDiagram />
-  <section class="method-grid" style="margin-top:70px">{cards.map(([n,t,d])=><article class="method-card"><small>{n}</small><h2>{t}</h2><p>{d}</p></article>)}</section>
-</BaseLayout>
+<BaseLayout title="작업 방식 — dejung71020"><section class="page-heading"><p class="eyebrow">PROJECT ARCHIVE</p><h1>작업 방식</h1><p>작업 소개를 정리했습니다.</p></section><a class="back-link" href="/#approach">소개 보기 ↗</a></BaseLayout>

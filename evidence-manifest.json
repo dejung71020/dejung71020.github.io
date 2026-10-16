@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "captured_at": "2026-07-16T00:00:00+09:00",
-  "policy": "Real public or locally built UI only; synthetic test data; metadata stripped; no admin or customer surfaces.",
+  "policy": "Public project screens and user-approved historical login screenshots. No live runtime verification is implied.",
   "captures": [
     {
       "project": "YAMON public homepage",
@@ -65,6 +65,25 @@
       "fixture": "reviewed project presentation data",
       "redacted": true,
       "output": "public/evidence/pangpangpang.webp"
+    },
+    {
+      "project": "YAMON homepage UI",
+      "output": "public/evidence/yamon-home.jpg",
+      "source": "Public homepage screenshot used in reviewed proposal",
+      "capture_date": "historical"
+    },
+    {
+      "project": "Pangpangpang web",
+      "output": "public/evidence/pangpangpang-web.png",
+      "source": "Existing logged-in production screenshot selected by user",
+      "capture_date": "historical; source file modified 2026-07-08"
+    },
+    {
+      "project": "Meeting agent WBS",
+      "output": "public/evidence/meeting-agent-wbs.webp",
+      "source": "Previously public project screenshot selected by user",
+      "capture_date": "historical"
     }
-  ]
+  ],
+  "updated_at": "2026-10-16"
 }

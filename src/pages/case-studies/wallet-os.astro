@@ -1,12 +1,4 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import CaseStudy from '../../ui/organisms/CaseStudy.astro';
 ---
-<BaseLayout title="Wallet OS Lite — Daejung Lee" description="급여 배분과 월 정산을 기기 안에서 완성하는 Expo local-first 사례">
-  <CaseStudy eyebrow="LOCAL FIRST · EXPO" title="결정 피로를 줄이는 월급 배분" summary="급여 입력부터 55/30/15 목적별 지갑 배분, 원 단위 합계 검증, 월 정산 로컬 저장까지 닫히는 작은 기능입니다." image="/evidence/wallet-os.webp" imageAlt="Wallet OS Lite 급여 자동 배분 실제 화면" tags={['Expo 57','TypeScript','SQLite']} sourceHref="https://github.com/dejung71020/wallet-os-lite">
-    <h2>사용자 결과</h2><p>월급을 입력한 사용자가 세 지갑의 금액을 즉시 확인하고, 미배분 금액 없이 이번 달 정산을 기기에 저장합니다.</p>
-    <h2>소유 경계</h2><ul><li>순수 배분 규칙이 원 단위 합계 불변식을 소유합니다.</li><li>UI는 입력과 계산 결과 표현만 담당합니다.</li><li>정산 스냅샷은 계정이나 서버 없이 기기 로컬 저장소에 남습니다.</li></ul>
-    <div class="evidence-panel"><div><small>FLOW</small><strong>Input → Allocation</strong></div><div><small>INVARIANT</small><strong>Remainder 0</strong></div><div><small>STORAGE</small><strong>Device local</strong></div></div>
-    <h2>검증</h2><p>반올림 손실이 발생하기 쉬운 금액, 잘못된 배분 비율, 월 정산의 합계를 배분 규칙 옆의 테스트로 확인합니다. 화면 데이터는 모두 synthetic fixture입니다.</p>
-  </CaseStudy>
-</BaseLayout>
+<BaseLayout title="금액 배분 데모 — dejung71020"><section class="page-heading"><p class="eyebrow">PROJECT ARCHIVE</p><h1>금액 배분 데모</h1><p>작업 소개를 정리했습니다.</p></section><a class="back-link" href="/case-studies/allocation">소개 보기 ↗</a></BaseLayout>

@@ -1,9 +1,10 @@
+import { fileURLToPath } from 'node:url';
 import { readFileSync, readdirSync, statSync } from 'node:fs';
 import { extname, join, relative } from 'node:path';
 
-const root = new URL('..', import.meta.url).pathname;
+const root = fileURLToPath(new URL('..', import.meta.url));
 const extensions = new Set(['.astro', '.css', '.js', '.mjs', '.json', '.md', '.svg', '.ts', '.yaml', '.yml']);
-const ownerContacts = ['dejung71020@gmail.com', '01097451519', '010-9745-1519'];
+const ownerContacts = [];
 const denied = [
   ['GitHub token', /gh[pousr]_[A-Za-z0-9_]{20,}/g],
   ['secret assignment', /(?:api[_-]?key|secret|token|password)\s*[:=]\s*["'][^"']+/gi],
@@ -27,6 +28,12 @@ for (const file of walk(root).filter((path) => extensions.has(extname(path)))) {
   for (const contact of ownerContacts) text = text.replaceAll(contact, '[approved-owner-contact]');
   for (const [label, pattern] of denied) {
     for (const match of text.matchAll(pattern)) violations.push(`${relative(root, file)}: ${label}: ${match[0].slice(0, 32)}`);
+  }
+}
+for (const directory of ['src', 'public']) {
+  for (const file of walk(join(root, directory)).filter((path) => extensions.has(extname(path)))) {
+    const text = readFileSync(file, 'utf8');
+    if (/(?:\uC774\uB300\uC911|\uC774\uAE30\uC068|Daejung Lee|mailto:|tel:)/i.test(text)) violations.push(`${relative(root, file)}: personal identity or direct contact`);
   }
 }
 if (violations.length) {

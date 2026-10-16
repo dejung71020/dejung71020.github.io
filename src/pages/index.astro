@@ -1,43 +1,59 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import ArchitectureDiagram from '../ui/molecules/ArchitectureDiagram.astro';
-import StatusTag from '../ui/atoms/StatusTag.astro';
 const projects = [
-  {href:'/case-studies/production-refactoring',image:'/evidence/yamon-home.webp',meta:'PRODUCTION · YAMON',title:'운영 리팩터링',description:'공개 서비스를 유지하면서 변경을 복구 가능한 작은 증거로 나눕니다.',tags:['Architecture','Recovery']},
-  {href:'/case-studies/wallet-os',image:'/evidence/wallet-os.webp',meta:'LOCAL FIRST · EXPO',title:'Wallet OS Lite',description:'급여 입력부터 목적별 배분과 월 정산까지, 기기 안에서 닫히는 수직 기능입니다.',tags:['TypeScript','SQLite']},
-  {href:'/case-studies/soccer-intelligence',image:'/evidence/soccer-fieldnote.webp',meta:'CONTRACT · FASTAPI + ASTRO',title:'Soccer Intelligence Lite',description:'하나의 fixture 계약이 API와 경기 목록·상세 화면까지 이어집니다.',tags:['FastAPI','Astro 7']},
-  {href:'/projects/workb',image:'/evidence/workb.webp',meta:'MEETING INTELLIGENCE',title:'WorkB',description:'회의 준비와 기록, 액션 아이템을 실제 업무 도구로 이어주는 협업 서비스입니다.',tags:['FastAPI','Integration']},
+ { id:'yamon', n:'01', kind:'BRAND EXPERIENCE', title:'YAMON', subtitle:'브랜드의 첫인상, 선명하게.', image:'/evidence/yamon-home.jpg', tech:'WEB DESIGN · RESPONSIVE UI', href:'/case-studies/yamon', tone:'wide', caption:'YAMON 홈페이지' },
+ { id:'pangpangpang', n:'02', kind:'AI · WEB & APP', title:'팡팡팡', subtitle:'사진 한 장에서, 다음 행동까지.', image:'/evidence/pangpangpang-web.png', tech:'NEXT.JS · FLUTTER · FASTAPI · GEMINI', href:'/case-studies/pangpangpang', tone:'', caption:'팡팡팡' },
+ { id:'meeting-agent', n:'03', kind:'AI · WORKFLOW', title:'회의 에이전트', subtitle:'대화가 끝나면, 일이 시작되도록.', image:'/evidence/meeting-agent-wbs.webp', tech:'FASTAPI · LANGGRAPH · OPENAI · OAUTH', href:'/case-studies/meeting-agent', tone:'', caption:'회의 에이전트' },
 ];
 ---
-<BaseLayout>
-  <section class="hero">
-    <div>
-      <p class="eyebrow">AI-NATIVE BACKEND & PLATFORM ENGINEER</p>
-      <h1>빠르게 만들고,<em>끝까지 다듬습니다.</em></h1>
-      <p class="hero-copy">Vibe Carving으로 AI 개발을 구조·계약·테스트·배포·관측·복구가 가능한 시스템으로 다듬는 Daejung Lee(이대중)입니다.</p>
-      <div class="hero-actions"><a class="btn btn-carving" href="#work">대표 사례 보기</a><a class="btn btn-ghost-carving" href="/vibe-carving">작업 방식 읽기</a></div>
+<BaseLayout title="dejung71020 — Ideas, made real.">
+<section class="portfolio-intro" aria-labelledby="intro-title">
+  <div class="intro-copy">
+    <p class="eyebrow"><span class="status-dot"></span> dejung71020 <span class="eyebrow-divider">/</span> WEB · APP · API</p>
+    <h1 id="intro-title">Ideas.<br /><span>Made real<span class="period">.</span></span></h1>
+    <p class="intro-description">눈길을 끄는 화면. 손끝에 이어지는 경험.<br />디자인부터 웹·앱·API까지.</p>
+    <a class="primary-link" href="#work">작업 살펴보기 <span aria-hidden="true">↘</span></a>
+  </div>
+  <aside class="intro-note" aria-label="인터랙티브 디자인 오브제">
+    <div class="object-top"><span>FORM / FUNCTION</span><span aria-hidden="true">✳</span></div>
+    <div class="sculpture" aria-hidden="true">
+      <svg viewBox="0 0 480 480" fill="none"><defs>
+        <linearGradient id="metal" x1="100" y1="50" x2="390" y2="410" gradientUnits="userSpaceOnUse"><stop stop-color="var(--sculpt-light)"/><stop offset=".26" stop-color="var(--sculpt-mid)"/><stop offset=".48" stop-color="var(--sculpt-dark)"/><stop offset=".64" stop-color="var(--sculpt-light)"/><stop offset="1" stop-color="var(--sculpt-mid)"/></linearGradient>
+        <linearGradient id="edge" x1="150" y1="60" x2="300" y2="430" gradientUnits="userSpaceOnUse"><stop stop-color="#ffffff" stop-opacity=".85"/><stop offset=".5" stop-color="#ffffff" stop-opacity="0"/><stop offset="1" stop-color="#101a10" stop-opacity=".25"/></linearGradient>
+        <filter id="shadow" x="-50%" y="-50%" width="200%" height="200%"><feDropShadow dx="0" dy="18" stdDeviation="12" flood-color="#183523" flood-opacity=".16"/></filter>
+      </defs><g filter="url(#shadow)" stroke="url(#metal)" stroke-width="57"><ellipse cx="240" cy="240" rx="170" ry="78" transform="rotate(-35 240 240)"/><ellipse cx="240" cy="240" rx="170" ry="78" transform="rotate(85 240 240)"/><ellipse cx="240" cy="240" rx="170" ry="78" transform="rotate(25 240 240)"/></g><ellipse cx="240" cy="240" rx="170" ry="78" transform="rotate(-35 240 240)" stroke="url(#edge)" stroke-width="2"/></svg>
+      <span class="object-coordinate coord-a">X / 01</span><span class="object-coordinate coord-b">Y / 03</span>
     </div>
-    <aside class="hero-proof" aria-label="엔지니어링 증거 요약">
-      <div class="proof-head"><span>PRODUCTION MINDSET</span><span>2026</span></div>
-      <p class="proof-title">생성 속도가 아니라<br />운영 가능한 완성도를 증명합니다.</p>
-      <div class="proof-grid"><div><b>Contract</b><span>경계와 언어</span></div><div><b>Evidence</b><span>테스트와 실제 화면</span></div><div><b>Delivery</b><span>재현 가능한 배포</span></div><div><b>Recovery</b><span>실행해 본 복구</span></div></div>
-    </aside>
-  </section>
-
-  <section class="architecture-section">
-    <div class="section-heading"><p class="eyebrow">THE METHOD</p><div><h2>Prompt에서 운영 증거까지<br />하나의 흐름으로 연결합니다.</h2><p>AI와의 작업을 결과물 생성에서 멈추지 않고, 가장 작은 사용자 결과와 공개 계약을 기준으로 반복해서 carving합니다.</p></div></div>
-    <ArchitectureDiagram />
-  </section>
-
-  <section class="work-section" id="work">
-    <div class="section-heading"><p class="eyebrow">SELECTED WORK</p><div><h2>설명보다<br />작동하는 증거.</h2><p>공개 서비스 화면, 실행 가능한 Lite 저장소, 테스트와 복구 기록을 함께 제시합니다.</p></div></div>
-    <div class="work-grid">
-      {projects.map((project) => <a class="project-card" href={project.href}><img src={project.image} alt={`${project.title} 실제 UI`} width="640" height="400" loading="lazy" /><div class="project-card-copy"><div class="project-card-meta"><span class="eyebrow">{project.meta}</span><span>↗</span></div><h3>{project.title}</h3><p>{project.description}</p><div class="tag-row" style="margin-top:18px">{project.tags.map((tag) => <StatusTag label={tag} />)}</div></div></a>)}
-    </div>
-  </section>
-
-  <section class="principles">
-    <div class="section-heading"><p class="eyebrow">ENGINEERING PRINCIPLES</p><div><h2>현업에서 지키는<br />세 가지 기준.</h2></div></div>
-    <div class="principle-grid"><article class="principle-card"><span>01</span><h3>경계가 먼저다</h3><p>프레임워크보다 사용자 결과와 소유권, 공개 계약을 먼저 고정합니다.</p></article><article class="principle-card"><span>02</span><h3>증거가 완료다</h3><p>테스트, production build, 실제 화면, 관측 가능한 상태가 완료 조건입니다.</p></article><article class="principle-card"><span>03</span><h3>복구도 기능이다</h3><p>배포 전에 원래 상태로 돌아가는 절차를 실행하고 기록합니다.</p></article></div>
-  </section>
+    <div class="object-bottom"><span>같은 형태, 다른 인상.</span><div class="palette" role="group" aria-label="화면 포인트 색상"><button type="button" data-theme-choice="lime" aria-label="라임 색상" aria-pressed="true"><i></i></button><button type="button" data-theme-choice="coral" aria-label="코랄 색상" aria-pressed="false"><i></i></button><button type="button" data-theme-choice="blue" aria-label="블루 색상" aria-pressed="false"><i></i></button></div></div>
+  </aside>
+  <div class="intro-baseline"><span>DESIGN × DEVELOPMENT</span><span>선명한 목적. 섬세한 구현.</span><a href="#work" aria-label="대표 작업으로 이동">SCROLL TO EXPLORE <span aria-hidden="true">↓</span></a></div>
+</section>
+<section id="work" class="work-section" aria-labelledby="work-title">
+  <div class="section-heading"><div><p class="eyebrow">A FEW THINGS I'VE WORKED ON</p><h2 id="work-title">Selected work<span>(03)</span></h2></div><p>서로 다른 문제.<br />각각의 해답.</p></div>
+  <div class="work-grid">{projects.map(p=><a class:list={['project-card',p.tone]} href={p.href} aria-label={p.caption+' 작업 상세 보기'}><div class:list={['project-image',p.id]}><div class="image-label"><span>{p.kind}</span><span>{p.n} / 03</span></div>{p.id==='yamon'&&<span class="project-watermark" aria-hidden="true">YAMON</span>}{p.id==='pangpangpang'&&<><span class="mobile-orbit" aria-hidden="true"></span><span class="mobile-word" aria-hidden="true">A little<br />more care.</span></>}{p.id==='meeting-agent'&&<div class="workflow-word" aria-hidden="true"><span>Meeting.</span><span>Action. ↗</span></div>}<div class="screen-frame"><img src={p.image} alt={p.id === 'meeting-agent' ? '회의 에이전트 WBS·태스크 리스트 실제 화면' : p.id === 'pangpangpang' ? '기존 공개 자료에 게시된 팡팡팡 앱 화면' : p.caption+' 실제 화면'} loading="lazy" width={p.id==='meeting-agent'?1200:1440} height={p.id==='meeting-agent'?585:900} /></div><span class="image-arrow" aria-hidden="true">↗</span></div><div class="project-caption"><div><h3>{p.caption}</h3><p>{p.subtitle}</p></div><span class="project-number">{p.n}</span></div><p class="tech">{p.tech}</p></a>)}</div>
+</section>
+<section id="approach" class="approach-section" aria-labelledby="approach-title">
+  <div class="section-heading"><div><p class="eyebrow">SMALL DETAILS. WHOLE EXPERIENCE.</p><h2 id="approach-title">좋은 화면, 그 다음까지.</h2></div><span class="section-symbol" aria-hidden="true">✳</span></div>
+  <div class="approach-grid"><article><div class="approach-visual scope-visual" aria-hidden="true"><span></span><span></span><span></span></div><span>01 / SCOPE</span><h3>목적을 선명하게.</h3><p>사용자 흐름과 완료 기준부터.</p></article><article><div class="approach-visual build-visual" aria-hidden="true"><span>↗</span><span>+</span></div><span>02 / BUILD</span><h3>경험을 촘촘하게.</h3><p>화면·반응형·API를 하나의 흐름으로.</p></article><article><div class="approach-visual verify-visual" aria-hidden="true"><span>✓</span><i></i><i></i><i></i></div><span>03 / VERIFY</span><h3>끝까지 확인하게.</h3><p>동작·빌드·화면, 확인한 범위까지.</p></article></div>
+</section>
+<section class="closing"><div><p class="eyebrow">YOUR NEXT PROJECT</p><h2>다음은,<br /><span>당신의 아이디어.</span></h2></div><a class="contact-disc" href="/contact" aria-label="협업 정보 보기"><span aria-hidden="true">↗</span><span>함께 만들기</span></a></section>
+<script is:inline>
+  const motionAllowed = window.matchMedia('(prefers-reduced-motion: no-preference)');
+  const object = document.querySelector('.sculpture');
+  if (object && window.matchMedia('(hover: hover)').matches) {
+    object.addEventListener('pointermove', event => {
+      if (!motionAllowed.matches) return;
+      const box = object.getBoundingClientRect();
+      object.style.setProperty('--tilt-x', ((event.clientY - box.top) / box.height * -12 + 6) + 'deg');
+      object.style.setProperty('--tilt-y', ((event.clientX - box.left) / box.width * 12 - 6) + 'deg');
+    });
+    object.addEventListener('pointerleave', () => { object.style.setProperty('--tilt-x', '0deg'); object.style.setProperty('--tilt-y', '0deg'); });
+  }
+  document.querySelectorAll('[data-theme-choice]').forEach(button => {
+    button.addEventListener('click', () => {
+      document.documentElement.dataset.palette = button.dataset.themeChoice;
+      document.querySelectorAll('[data-theme-choice]').forEach(item => item.setAttribute('aria-pressed', String(item === button)));
+    });
+  });
+</script>
 </BaseLayout>

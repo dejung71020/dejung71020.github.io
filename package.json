@@ -9,7 +9,8 @@
     "preview": "astro preview",
     "scan:public": "node scripts/public-scan.mjs",
     "check:links": "node scripts/check-links.mjs",
-    "verify": "npm run scan:public && npm run build && npm run check:links"
+    "verify": "npm run scan:public && npm run build && npm run check:links",
+    "verify:ui": "node verify-ui.mjs"
   },
   "dependencies": {
     "@astrojs/sitemap": "3.7.3",
@@ -21,6 +22,7 @@
   "devDependencies": {
     "@astrojs/check": "0.9.9",
     "sharp": "0.35.3",
-    "typescript": "6.0.3"
+    "typescript": "6.0.3",
+    "playwright": "1.62.1"
   }
 }
